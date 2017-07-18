@@ -2,6 +2,11 @@ input,textarea,select {
     margin-bottom: 5px;
 }
 
+
+a:hover{
+    text-decoration: none;
+}
+
 .navbar-default {
     background-color: #167fd8;
     border-color: #167fd8;
