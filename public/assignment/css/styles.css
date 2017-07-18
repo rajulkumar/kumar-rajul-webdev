@@ -1,0 +1,44 @@
+input,textarea,select {
+    margin-bottom: 5px;
+}
+
+.navbar-default {
+    background-color: #167fd8;
+    border-color: #167fd8;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+    margin: auto;
+}
+
+body{
+    padding-top:60px;
+    padding-bottom: 60px
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+@media (min-width: 0px) {
+    .navbar>.container-fluid .navbar-brand {
+        margin-left: -15px;
+    }
+}
+
+li
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    list-style: none;
+
+}
+
+.border{
+    border-right: 2px solid silver;
+}
+
+

@@ -1,0 +1,23 @@
+input, textarea {
+    margin-bottom: 5px;
+}
+
+body {
+    padding-top: 60px;
+}
+
+.jga .navbar-default {
+    background-color: #5061a0;
+    border-color: #262d4c;
+}
+
+.jga .navbar-default .navbar-brand {
+    color: white;
+}
+
+a.navbar-brand:hover{
+    color:white
+}
+a.navbar-brand:visited{
+    color:white
+}
