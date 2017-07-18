@@ -41,4 +41,27 @@ li
     border-right: 2px solid silver;
 }
 
+.widget{
+    position: relative;
+    margin-bottom: 15px;
+}
 
+.inline{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding-bottom:10px;
+    padding-right:15px;
+    padding-top: 5px;
+    background: white;
+    z-index: 10;
+
+}
+
+.upad-left{
+    padding-left:0px;
+}
+
+.upad-right{
+    padding-right: 0px;
+}
