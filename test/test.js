@@ -1,7 +1,26 @@
-var app = angular.module("WamApp",[]);
+(function(){
+    angular.module("WamApp",[]);
 
-app.controller("loginController", loginController);
+angular.module("WamApp").controller("loginController",func);
 
-function loginController($scope){
-        $scope.hello="hello world";
+function func($scope) {
+    $scope.login = login;
+    $scope.hello = "hello world";
+
+    function login(user) {
+        $scope.messg = verifyUser(user)+" "+ user;
+    }
+
+    function verifyUser(user)
+    {
+        if(user=="lol"){
+            return "hello"
+        }
+        else{
+            return "Invalid user"
+        }
+    }
 }
+
+})();
+

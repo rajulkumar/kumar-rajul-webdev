@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" ng-app="WamApp">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="../public/vendor/angular/angular.js"></script>
+    <!--<script src="../public/vendor/angular/angular.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
     <script src="test.js"></script>
     <title>Login</title>
     <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>-->
@@ -12,16 +14,18 @@
     <link href="styles.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid" ng-app="WamApp">
 
     <div ng-controller="loginController">
 
-   <h2>{{hello}}</h2>
+   <h2>{{ hello }}</h2>
+   <h2 ng-show="messg">{{ messg }}</h2>
 
         <h2 class="text-center">Login</h2>
 
     <label for="username">Username</label>
-    <input name="username"
+    <input ng-model="user"
+           name="username"
            placeholder="Username"
            class="form-control"
            id="username"/>
@@ -34,7 +38,8 @@
            id="password"/>
 
     <a class="btn btn-default btn-primary btn-block"
-       href="profile.html"
+       ng-click="login(user)"
+       href="#"
        role="button">Login</a>
 
     <a class="btn btn-default btn-success btn-block"
