@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <a class="navbar-brand">Profile</a>
         <a class="navbar-nav navbar-brand pull-right"
-           href="#">
+           ng-click="model.ok(model.user._id,model.user)">
             <span class="glyphicon glyphicon-ok"></span>
         </a>
     </div>
@@ -11,15 +11,19 @@
 
 
 <div class="container-fluid">
+    <div ng-show="model.errorMessage" class="alert alert-danger">{{model.errorMessage}}</div>
+    <div ng-show="model.    updateMessage" class="alert alert-success">{{model.updateMessage}}</div>
     <label for="username">Username</label>
     <input name="username"
            ng-model="model.user.username"
+           disabled
            placeholder="Username"
            class="form-control"
            id="username"/>
 
     <label for="email">Email</label>
     <input name="email"
+           ng-model="model.user.email"
            placeholder="Email"
            type="email"
            class="form-control"
@@ -40,18 +44,18 @@
            id="last-name"/>
 
     <a class="btn btn-default btn-primary btn-block"
-       href="website-list.html"
+       ng-click="model.website(model.user._id)"
        role="button">Websites</a>
 
     <a class="btn btn-default btn-danger btn-block"
-       href="login.html"
+       ng-click="model.logout()"
        role="button">Logout</a>
 </div>
 
 <nav class="navbar navbar-fixed-bottom">
     <div class="container-fluid">
         <a class="navbar-nav navbar-brand pull-right"
-           href="#">
+        ng-click="model.profile(model.user._id)">
             <span class="glyphicon glyphicon-user"></span>
         </a>
     </div>

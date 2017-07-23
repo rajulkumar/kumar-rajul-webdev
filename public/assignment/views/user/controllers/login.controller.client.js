@@ -5,9 +5,9 @@
 
     function loginController($location, userService){
 
-        var model=this
+        var model=this;
 
-        model.login = login
+        model.login = login;
 
         function init(){
 
@@ -26,7 +26,7 @@
                     model.errorMessage = "Invalid credentials";
                 }
                 else {
-                    $location.url("profile/" + userInfo._id);
+                    $location.url("user/" + userInfo._id);
                 }
             }
         }
