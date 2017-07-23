@@ -13,6 +13,7 @@
 <div class="container-fluid">
     <label for="username">Username</label>
     <input name="username"
+           ng-model="model.user.username"
            placeholder="Username"
            class="form-control"
            id="username"/>
@@ -26,12 +27,14 @@
 
     <label for="first-name">First Name</label>
     <input name="first-name"
+           ng-model="model.user.firstName"
            placeholder="First Name"
            class="form-control"
            id="first-name"/>
 
     <label for="last-name">Last Name</label>
     <input name="last-name"
+           ng-model="model.user.lastName"
            placeholder="Last Name"
            class="form-control"
            id="last-name"/>

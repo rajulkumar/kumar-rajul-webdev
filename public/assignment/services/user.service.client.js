@@ -13,11 +13,42 @@
         ];
 
         var api={
+            "createUser":createUser,
+            "findUserByUserId":findUserByUserId,
             "findUserByUsername":findUserByUsername,
-            "findUserByCredentials":findUserByCredentials
+            "findUserByCredentials":findUserByCredentials,
+            "updateUser":updateUser,
+            "deleteUser":deleteUser
         };
 
         return api;
+
+        function _generateUserId(){
+            return Math.floor(Math.random()*1000);
+        }
+
+        function createUser(user){
+            var userInfo={};
+
+            userInfo['username']=user.username;
+            userInfo['password']=user.password;
+            userInfo['firstName']=user.firstName;
+            userInfo['lastName']=user.lastName;
+            userInfo['email']=user.email;
+
+            userInfo['username']=_generateUserId();
+
+            return users.push(userInfo);
+        }
+
+        function findUserByUserId(userId){
+            for(var idx in users){
+                if(users[idx]._id===userId){
+                    return users[idx];
+                }
+            }
+            return null;
+        }
 
         function findUserByUsername(username){
             for(var idx in users){
@@ -40,7 +71,31 @@
             return null;
         }
 
+        function updateUser(userId, user){
+            for(var idx in users){
+                if(users[idx]._id===userId)
+                {
+                    users[idx]=user;
+                    return 1;
+                }
+            }
+            return 0;
+        }
 
+        function deleteUser(userId){
+            var id;
+            for(var idx in users){
+                if(users[idx]._id===userId)
+                {
+                   id=idx;
+                   break;
+                }
+            }
+            if(id) {
+                return users.splice(id, 1);
+            }
+            return null;
+        }
 
     }
 })();
