@@ -12,7 +12,7 @@
             {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
         ];
 
-        var api={
+        return api={
             "createUser":createUser,
             "findUserByUserId":findUserByUserId,
             "findUserByUsername":findUserByUsername,
@@ -20,8 +20,6 @@
             "updateUser":updateUser,
             "deleteUser":deleteUser
         };
-
-        return api;
 
         function _generateUserId(){
             return Math.floor(Math.random()*1000);

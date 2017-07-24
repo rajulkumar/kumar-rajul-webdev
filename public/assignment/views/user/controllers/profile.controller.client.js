@@ -43,7 +43,7 @@
 
         function profile(userId){
             $location.url("user/"+userId);
-            
+
         }
 
 
