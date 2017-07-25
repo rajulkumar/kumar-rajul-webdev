@@ -1,0 +1,33 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-nav navbar-brand"
+           ng-click="model.profile(model.userId)">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="navbar-brand">Websites</a>
+        <a class="navbar-nav navbar-brand pull-right"
+           ng-click="model.newWebsite(model.userId)">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <ul class="list-group">
+      <li ng-repeat="website in model.websites">
+           <a class="btn btn-link" ng-click="model.pageList(model.userId,website._id)">{{website.name}}</a>
+           <a ng-click="model.editWebsite(model.userId,website._id)">
+              <span class="glyphicon glyphicon-cog pull-right"></span>
+          </a>
+       </li>
+    </ul>
+</div>
+<nav class="navbar navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a class="navbar-nav navbar-brand pull-right"
+           ng-click="model.profile(model.userId)">
+            <span class="glyphicon glyphicon-user"></span>
+        </a>
+    </div>
+
+</nav>
