@@ -1,0 +1,10 @@
+<div class="container-fluid">
+    <ul class="list-group">
+        <li ng-repeat="website in model.websites">
+            <a class="btn btn-link" ng-click="model.pageList(website._id)">{{website.name}}</a>
+            <a ng-click="model.editWebsite(website._id)">
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+    </ul>
+</div>

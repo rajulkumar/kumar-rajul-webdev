@@ -1,10 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="visible-xs">
+            <a class="navbar-nav navbar-brand"
+               ng-click="model.listWebsite()">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="navbar-brand">New Website</a>
+            <a class="navbar-nav navbar-brand pull-right"
+               ng-click="model.createWebsite(model.website)">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+        <div class="hidden-xs">
+            <div class="col-xs-6 col-sm-4 upad-left">
+                <a class="navbar-nav navbar-brand"
+                   ng-click="model.listWebsite()">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="navbar-brand">Websites</a>
+                <a class="navbar-nav navbar-brand pull-right"
+                   ng-click="model.newWebsite()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-8 upad-right">
+                <a class="navbar-brand">New Website</a>
+                <a class="navbar-nav navbar-brand pull-right"
+                   ng-click="model.createWebsite(model.website)">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
 
-</body>
-</html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6 col-sm-4 hidden-xs border scroll">
+            <div ng-include="'views/website/templates/website-list.html'"></div>
+        </div>
+        <div class="col-sm-8 col-xs-12">
+            <label for="name">Website Name</label>
+
+            <input id="name"
+                   ng-model="model.website.name"
+                   class="form-control"
+                   placeholder="Name"/>
+
+            <label for="description">Website Description</label>
+
+            <textarea ng-model="model.website.description"
+                      id="description"
+                      rows="3"
+                      class="form-control"
+                      placeholder="Description"></textarea>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a class="navbar-nav navbar-brand pull-right"
+           ng-click="model.profile()">
+            <span class="glyphicon glyphicon-user"></span>
+        </a>
+    </div>
+
+</nav>

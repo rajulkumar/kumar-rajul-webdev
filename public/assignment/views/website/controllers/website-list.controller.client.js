@@ -19,20 +19,20 @@
         }
         init();
 
-        function newWebsite(userId){
-            $location.url("user/"+userId+"/website/new");
+        function newWebsite(){
+            $location.url("user/"+_userId+"/website/new");
         }
 
-        function editWebsite(userId,websiteId){
-            $location.url("user/"+userId+"/website/"+websiteId);
+        function editWebsite(websiteId){
+            $location.url("user/"+_userId+"/website/"+websiteId);
         }
 
-        function pageList(userId,websiteId){
-            $location.url("user/"+userId+"/website/"+websiteId+"/page");
+        function pageList(websiteId){
+            $location.url("user/"+_userId+"/website/"+websiteId+"/page");
         }
 
-        function profile(userId){
-            $location.url("user/"+userId);
+        function profile(){
+            $location.url("user/"+_userId);
         }
 
     }

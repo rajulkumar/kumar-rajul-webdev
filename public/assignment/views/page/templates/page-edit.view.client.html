@@ -2,31 +2,31 @@
     <div class="container-fluid">
         <div class="visible-xs">
             <a class="navbar-nav navbar-brand"
-               ng-click="model.listWebsite()">
+               ng-click="model.listPage()">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
-            <a class="navbar-brand">New Website</a>
+            <a class="navbar-brand">New Page</a>
             <a class="navbar-nav navbar-brand pull-right"
-               ng-click="model.updateWebsite(model.website)">
+               ng-click="model.updatePage(model.page)">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
         <div class="hidden-xs">
             <div class="col-xs-6 col-sm-4 upad-left">
                 <a class="navbar-nav navbar-brand"
-                   ng-click="model.listWebsite()">
+                   ng-click="model.listPage()">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
-                <a class="navbar-brand">Websites</a>
+                <a class="navbar-brand">Pages</a>
                 <a class="navbar-nav navbar-brand pull-right"
-                   ng-click="model.newWebsite()">
+                   ng-click="model.newPage()">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
             <div class="col-xs-12 col-sm-8 upad-right">
-                <a class="navbar-brand">New Website</a>
+                <a class="navbar-brand">New Page</a>
                 <a class="navbar-nav navbar-brand pull-right"
-                   ng-click="model.updateWebsite(model.website)">
+                   ng-click="model.updatePage(model.page)">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
@@ -37,26 +37,25 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-6 col-sm-4 hidden-xs border scroll">
-            <div ng-include="'views/website/templates/website-list.html'"></div>
+            <div ng-include="'views/page/templates/page-list.html'"></div>
         </div>
         <div class="col-sm-8 col-xs-12">
-            <label for="name">Website Name</label>
+            <label for="name">Name</label>
 
             <input id="name"
-                   ng-model="model.website.name"
+                   ng-model="model.page.name"
                    class="form-control"
                    placeholder="Name"/>
 
-            <label for="description">Website Description</label>
+            <label for="title">Title</label>
 
-            <textarea ng-model="model.website.description"
-                      id="description"
-                      rows="3"
-                      class="form-control"
-                      placeholder="Description"></textarea>
+            <input id="title"
+                   ng-model="model.page.description"
+                   class="form-control"
+                   placeholder="Title"/>
 
             <a class="btn btn-default btn-block btn-danger"
-               ng-click="model.deleteWebsite()"
+               ng-click="model.deletePage()"
                role="button">
                 Delete
             </a>
