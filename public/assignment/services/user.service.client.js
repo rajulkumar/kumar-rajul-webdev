@@ -26,26 +26,30 @@
         }
 
         function createUser(user){
-            var userInfo={};
+            //var userInfo={};
 
-            userInfo['username']=user.username;
-            userInfo['password']=user.password;
-            userInfo['firstName']=user.firstName;
-            userInfo['lastName']=user.lastName;
-            userInfo['email']=user.email;
+            // userInfo['username']=user.username;
+            // userInfo['password']=user.password;
+            // userInfo['firstName']=user.firstName;
+            // userInfo['lastName']=user.lastName;
+            // userInfo['email']=user.email;
 
-            userInfo['username']=_generateUserId();
+            user['_id']=_generateUserId();
 
-            return users.push(userInfo);
+            return users.push(user);
         }
 
+        // function findUserByUserId(userId){
+        //     for(var idx in users){
+        //         if(users[idx]._id===userId){
+        //             return users[idx];
+        //         }
+        //     }
+        //     return null;
+        // }
+
         function findUserByUserId(userId){
-            for(var idx in users){
-                if(users[idx]._id===userId){
-                    return users[idx];
-                }
-            }
-            return null;
+            return findOjectByObjectId(userId,users);
         }
 
         function findUserByUsername(username){
@@ -87,6 +91,7 @@
                 {
                    id=idx;
                    break;
+
                 }
             }
             if(id) {

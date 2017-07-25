@@ -21,23 +21,31 @@
 
 
         function createPage(websiteId, page) {
+            page["websiteId"]=websiteId;
+            return createObjet(page,pages);
 
         }
 
         function findPageByWebsiteId(websiteId) {
-
+            var pageLst=[];
+            for(var idx in pages){
+                if(pages[idx].websiteId===websiteId){
+                    pageLst.push(pages[idx]);
+                }
+            }
+            return pageLst;
         }
 
         function findPageById(pageId) {
-
+            return findOjectByObjectId(pageId,pages);
         }
 
         function updatePage(pageId, page) {
-
+            return updateObject(pageId,page,pages);
         }
 
         function deletePage(pageId) {
-
+            return deleteObject(pageId,pages);
         }
     }
 

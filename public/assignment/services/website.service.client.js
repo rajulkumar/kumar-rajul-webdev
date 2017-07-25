@@ -25,23 +25,30 @@
 
 
         function createWebsite(userId, website) {
-
+            website["developerId"]=userId;
+            return createObjet(website,websites);
         }
 
         function findWebsitesByUser(userId) {
-
+            var webs=[];
+            for(var idx in websites){
+                if(websites[idx].developerId===userId){
+                    webs.push(websites[idx]);
+                }
+            }
+            return webs;
         }
 
         function findWebsiteById(websiteId) {
-
+            return findOjectByObjectId(websiteId,websites);
         }
 
         function updateWebsite(websiteId, website) {
-
+            return updateObject(websiteId,website,websites);
         }
 
         function deleteWebsite(websiteId) {
-
+            return deleteObject(websiteId,websites);
         }
     }
 

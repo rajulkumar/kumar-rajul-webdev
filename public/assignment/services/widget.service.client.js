@@ -31,23 +31,31 @@
 
 
         function createWidget(pageId, widget) {
-
+            widget["pageId"]=pageId;
+            return createObjet(widget,widgets);
         }
 
         function findWidgetsByPageId(pageId) {
+            var wids=[];
+            for(var idx in widgets){
+                if(widgets[idx].pageId===pageId){
+                    wids.push(widgets[idex]);
+                }
+            }
 
+            return wids;
         }
 
         function findWidgetById(widgetId) {
-
+            return findOjectByObjectId(widgetId,widgets);
         }
 
         function updateWidget(widgetId, widget) {
-
+            return updateObject(widgetId,widget,widgets);
         }
 
         function deleteWidget(widgetId) {
-
+            return deleteObject(widgetId,widgets);
         }
     }
 
