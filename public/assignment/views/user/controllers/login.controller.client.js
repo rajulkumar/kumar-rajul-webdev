@@ -8,6 +8,7 @@
         var model=this;
 
         model.login = login;
+        model.register=register;
 
         function init(){
 
@@ -29,6 +30,10 @@
                     $location.url("user/" + userInfo._id);
                 }
             }
+        }
+
+        function register(){
+            $location.url("register");
         }
 
     }

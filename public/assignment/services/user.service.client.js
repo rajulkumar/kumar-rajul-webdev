@@ -34,9 +34,10 @@
             // userInfo['lastName']=user.lastName;
             // userInfo['email']=user.email;
 
-            user['_id']=_generateUserId();
+            //user['_id']=_generateUserId();
 
-            return users.push(user);
+            //return users.push(user);
+            return createObjet(user,users);
         }
 
         // function findUserByUserId(userId){

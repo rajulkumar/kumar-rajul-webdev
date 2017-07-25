@@ -1,10 +1,12 @@
 function _generateId(){
-    return Math.floor(Math.random()*1000);
+    return Math.floor(Math.random()*1000).toString();
 }
 
 function createObjet(object,list){
-    object["_id"]=_generateId();
-    return list.push(object);
+    var id=_generateId();
+    object["_id"]=id;
+    list.push(object);
+    return id;
 }
 
 

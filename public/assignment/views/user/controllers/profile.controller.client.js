@@ -24,11 +24,11 @@
             {
                 return null;
             }
-            $location.url("/user/"+userId+"/website");
+            $location.url("user/"+userId+"/website");
         }
 
         function logout(){
-            $location.url("/login");
+            $location.url("login");
         }
 
         function profileOk(userId,user){

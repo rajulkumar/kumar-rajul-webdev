@@ -1,7 +1,6 @@
-
 <div class="container-fluid">
 
-    <h2 class="text-center">Login</h2>
+    <h2 class="text-center">Register</h2>
 
     <div ng-show="model.errorMessage"
          class="alert alert-danger">
@@ -23,11 +22,19 @@
            class="form-control"
            id="password"/>
 
-    <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.login(model.user)"
-       role="button">Login</a>
+    <label for="verify-password">Verify Password</label>
+    <input name="verfiy-password"
+           ng-model="model.user.verifyPass"
+           placeholder="Verfiy Password"
+           type="password"
+           class="form-control"
+           id="verify-password"/>
 
-    <a class="btn btn-default btn-success btn-block"
-       ng-click="model.register()"
+    <a class="btn btn-default btn-primary btn-block"
+       ng-click="model.register(model.user)"
        role="button">Register</a>
+
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.cancel()"
+       role="button">Cancel</a>
 </div>
