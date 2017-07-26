@@ -1,19 +1,20 @@
 <nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
         <a class="navbar-nav navbar-brand"
-           ng-click="model.website()">
+           ng-click="model.widgetList()">
             <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
-        <a class="navbar-brand">Pages</a>
-        <a class="navbar-nav navbar-brand pull-right"
-           ng-click="model.newPage()">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
+        <a class="navbar-brand">Choose Widget</a>
     </div>
 </nav>
 
-<div class="container-fluid"
-     ng-include="'views/page/templates/page-list.html'">
+<div class="container-fluid">
+    <ul class="list-group">
+        <li ng-repeat="widget in model.widgets">
+            <a class="btn btn-link"
+               ng-click="model.getWidgetUrl(widget._id)">{{widget.widgetType}}</a>
+        </li>
+    </ul>
 </div>
 
 <nav class="navbar navbar-fixed-bottom">

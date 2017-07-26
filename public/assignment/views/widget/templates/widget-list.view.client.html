@@ -1,0 +1,37 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-nav navbar-brand"
+           ng-click="model.pageList()">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="navbar-brand">Widgets</a>
+        <a class="navbar-nav navbar-brand pull-right"
+           ng-click="model.chooseWidget()">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <ul class="list-group">
+        <li class="widget" ng-repeat="widget in model.widgets">
+            <div class="inline">
+                <a ng-click="model.editWidget(widget._id)">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </div>
+            <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
+        </li>
+    </ul>
+</div>
+
+<nav class="navbar navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a class="navbar-nav navbar-brand pull-right"
+           ng-click="model.profile()">
+            <span class="glyphicon glyphicon-user"></span>
+        </a>
+    </div>
+
+</nav>

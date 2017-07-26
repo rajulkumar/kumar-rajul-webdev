@@ -21,12 +21,19 @@
             {"_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
         ];
 
+        var widgetTypes=[
+            {"_id":"123","widgetType": "HEADING","name":"Heading"},
+            {"_id":"234","widgetType": "IMAGE","name":"Image"},
+            {"_id":"345","widgetType": "YOUTUBE","name":"Youtube"}
+        ];
+
         return {
             "createWidget": createWidget,
             "findWidgetsByPageId": findWidgetsByPageId,
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
-            "deleteWidget": deleteWidget
+            "deleteWidget": deleteWidget,
+            "listWidgeTypes":listWidgetTypes
         };
 
 
@@ -39,7 +46,7 @@
             var wids=[];
             for(var idx in widgets){
                 if(widgets[idx].pageId===pageId){
-                    wids.push(widgets[idex]);
+                    wids.push(widgets[idx]);
                 }
             }
 
@@ -56,6 +63,10 @@
 
         function deleteWidget(widgetId) {
             return deleteObject(widgetId,widgets);
+        }
+
+        function listWidgetTypes(){
+            return widgetTypes;
         }
     }
 

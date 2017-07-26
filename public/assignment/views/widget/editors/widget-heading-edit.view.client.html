@@ -1,0 +1,29 @@
+<div class="container-fluid">
+
+    <label for="name">Name</label>
+    <input id="name"
+           ng-model="model.widget.name"
+           class="form-control"/>
+
+    <label for="text">Text</label>
+    <input id="text"
+           ng-model="model.widget.text"
+           class="form-control"/>
+
+    <label for="size">Size</label>
+    <select ng-model="model.widget.size"
+            id="size" class="form-control">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+    </select>
+
+    <a ng-click="model.deleteWidget()"
+       class="btn btn-danger btn-block">
+        Delete
+    </a>
+
+</div>

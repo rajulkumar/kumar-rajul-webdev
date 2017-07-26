@@ -1,0 +1,41 @@
+<div class="container-fluid">
+
+    <label for="name">Name</label>
+    <input id="name"
+           ng-model="model.widgit.name"
+           class="form-control"/>
+
+    <label for="text">Text</label>
+    <input id="text"
+           ng-model="model.widgit.text"
+           class="form-control"/>
+
+    <label for="url">URL</label>
+    <input id="url"
+           ng-model="model.widget.url"
+           type="url"
+           value="https://youtu.be/uLWLashCXHE"
+           class="form-control"/>
+
+    <label for="width">Width</label>
+    <input id="width"
+           ng-model="model.widget.width"
+           value="100"
+           class="form-control"/>
+
+    <label for="upload">Upload</label>
+    <input id="upload"
+           type="file"
+           class="form-control"/>
+
+    <a href=""
+       class="btn btn-primary btn-block">
+        Upload Image
+    </a>
+
+    <a ng-click="model.deleteWidget()"
+       class="btn btn-danger btn-block">
+        Delete
+    </a>
+
+</div>
