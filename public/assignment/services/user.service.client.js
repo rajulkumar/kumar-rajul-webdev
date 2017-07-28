@@ -3,14 +3,7 @@
         .module("WebAppMaker")
         .factory("userService",userService);
 
-    function userService(){
-
-        var users=[
-            {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-            {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-            {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-            {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-        ];
+    function userService($http){
 
         return api={
             "createUser":createUser,
@@ -21,57 +14,26 @@
             "deleteUser":deleteUser
         };
 
-        function _generateUserId(){
-            return Math.floor(Math.random()*1000);
-        }
-
         function createUser(user){
-            //var userInfo={};
-
-            // userInfo['username']=user.username;
-            // userInfo['password']=user.password;
-            // userInfo['firstName']=user.firstName;
-            // userInfo['lastName']=user.lastName;
-            // userInfo['email']=user.email;
-
-            //user['_id']=_generateUserId();
-
-            //return users.push(user);
             return createObjet(user,users);
         }
-
-        // function findUserByUserId(userId){
-        //     for(var idx in users){
-        //         if(users[idx]._id===userId){
-        //             return users[idx];
-        //         }
-        //     }
-        //     return null;
-        // }
 
         function findUserByUserId(userId){
             return findOjectByObjectId(userId,users);
         }
 
         function findUserByUsername(username){
-            for(var idx in users){
-                if(users[idx].username===username){
-                    return users[idx];
-                }
-            }
-            return null;
+            return $http.get("/api/user?username="+username)
+                .then(function (response){
+                    return response.data;
+                });
         }
 
         function findUserByCredentials(user){
-            for(var idx in users){
-                var _user=users[idx];
-                if(_user.username===user.username
-                    && _user.password===user.password)
-                {
-                    return _user;
-                }
-            }
-            return null;
+            return $http.get("/api/user?username="+username+"password="+password)
+                .then(function (response){
+                   return response.data;
+                });
         }
 
         function updateUser(userId, user){
