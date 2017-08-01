@@ -20,7 +20,10 @@
         model.websiteId=_websiteId;
 
         function init(){
-            model.pages=pageService.findPageByWebsiteId(_websiteId);
+            pageService.findPageByWebsiteId(_websiteId)
+                .then(function(pages){
+                    model.pages=pages;
+                })
         }
         init();
 
@@ -30,8 +33,10 @@
 
         function createPage(page){
             if(page) {
-                pageService.createPage(_websiteId,page);
-                $location.url("user/" + _userId + "/website/"+_websiteId+"/page");
+                pageService.createPage(_websiteId,page)
+                    .then(function(response){
+                        $location.url("user/" + _userId + "/website/"+_websiteId+"/page");
+                    })
             }
         }
 

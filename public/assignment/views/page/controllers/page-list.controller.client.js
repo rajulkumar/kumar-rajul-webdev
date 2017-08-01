@@ -18,7 +18,10 @@
         model.websiteId=_websiteId;
 
         function init(){
-            model.pages=pageService.findPageByWebsiteId(_websiteId);
+            pageService.findPageByWebsiteId(_websiteId)
+                .then(function(pages){
+                    model.pages=pages;
+                })
         }
         init();
 

@@ -5,12 +5,6 @@
 
     function pageService() {
 
-        var pages = [
-            {"_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem"},
-            {"_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem"},
-            {"_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem"}
-        ];
-
         return {
             "createPage": createPage,
             "findPageByWebsiteId": findPageByWebsiteId,
@@ -22,30 +16,38 @@
 
         function createPage(websiteId, page) {
             page["websiteId"]=websiteId;
-            return createObjet(page,pages);
-
-        }
+            return $http.post("/api/website/"+websiteId+"/page",website)
+                .then(function (response){
+                    return response.data;
+                })
+         }
 
         function findPageByWebsiteId(websiteId) {
-            var pageLst=[];
-            for(var idx in pages){
-                if(pages[idx].websiteId===websiteId){
-                    pageLst.push(pages[idx]);
-                }
-            }
-            return pageLst;
+            return $http.get("/api/website/"+websiteId+"/page")
+                .then(function (response){
+                    return response.data;
+                })
         }
 
         function findPageById(pageId) {
-            return findOjectByObjectId(pageId,pages);
+            return $http.get("/api/page/"+pageId)
+                .then(function(response){
+                    return response.data;
+                })
         }
 
         function updatePage(pageId, page) {
-            return updateObject(pageId,page,pages);
+            return $http.put("/api/page/"+pageId,page)
+                .then(function(response){
+                    return response.data;
+                })
         }
 
         function deletePage(pageId) {
-            return deleteObject(pageId,pages);
+            return $http.delete("/api/page/"+pageId)
+                .then(function(response){
+                    return response.data;
+                })
         }
     }
 

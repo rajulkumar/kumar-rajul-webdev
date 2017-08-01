@@ -5,28 +5,6 @@
 
     function widgetService() {
 
-        var widgets = [
-            {"_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
-            {"_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-            {
-                "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-                "url": "http://lorempixel.com/400/200/"
-            },
-            {"_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-            {"_id": "567", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-            {
-                "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-                "url": "https://youtu.be/AM2Ivdi9c4E"
-            },
-            {"_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
-        ];
-
-        var widgetTypes=[
-            {"_id":"123","widgetType": "HEADING","name":"Heading"},
-            {"_id":"234","widgetType": "IMAGE","name":"Image"},
-            {"_id":"345","widgetType": "YOUTUBE","name":"Youtube"}
-        ];
-
         return {
             "createWidget": createWidget,
             "findWidgetsByPageId": findWidgetsByPageId,
@@ -39,35 +17,40 @@
 
         function createWidget(pageId, widget) {
             widget["pageId"]=pageId;
-            return createObjet(widget,widgets);
+            return $http.post("/api/widget/"+pageId+"/widget",widget)
+                .then(function(response){
+                    return response.data;
+                })
         }
 
         function findWidgetsByPageId(pageId) {
-            var wids=[];
-            for(var idx in widgets){
-                if(widgets[idx].pageId===pageId){
-                    wids.push(widgets[idx]);
-                }
-            }
-
-            return wids;
+            return $http.get("/api/page/"+pageId+"/widget")
+                .then(function (response){
+                    return response.data;
+                })
         }
 
         function findWidgetById(widgetId) {
-            return findOjectByObjectId(widgetId,widgets);
+            return $http.get("/api/widget/"+widgetId)
+                .then(function(response){
+                    return response.data;
+                })
         }
 
         function updateWidget(widgetId, widget) {
-            return updateObject(widgetId,widget,widgets);
+            return $http.put("/api/widget/"+widgetId,widget)
+                .then(function(response){
+                    return response.data;
+                })
         }
 
         function deleteWidget(widgetId) {
-            return deleteObject(widgetId,widgets);
+            return $http.delete("/api/widget/"+widgetId)
+                .then(function(response){
+                    return response.data;
+                })
         }
 
-        function listWidgetTypes(){
-            return widgetTypes;
-        }
     }
 
 })();

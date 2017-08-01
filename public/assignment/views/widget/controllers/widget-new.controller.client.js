@@ -19,7 +19,10 @@
         model.pageId=_pageId;
 
         function init(){
-           model.widgets=widgetService.findWidgetsByPageId(_pageId);
+           widgetService.findWidgetsByPageId(_pageId)
+               .then(function(widgets){
+                   model.widgets=widgets;
+               })
         }
         init();
 

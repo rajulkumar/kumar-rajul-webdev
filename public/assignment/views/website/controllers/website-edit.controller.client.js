@@ -20,8 +20,14 @@
         model.websiteId=_websiteId;
 
         function init(){
-            model.website=websiteService.findWebsiteById(_websiteId);
-            model.websites=websiteService.findWebsitesByUser(_userId);
+            websiteService.findWebsiteById(_websiteId)
+                .then(function(website){
+                    model.website=website;
+                });
+            websiteService.findWebsitesByUser(_userId)
+                .then(function(websites){
+                    model.websites=websites;
+                })
         }
         init();
 
@@ -31,8 +37,10 @@
 
         function updateWebsite(website){
             if(website) {
-                websiteService.updateWebsite(_websiteId, website);
-                $location.url("user/" + _userId + "/website");
+                websiteService.updateWebsite(_websiteId, website)
+                    .then(function (response){
+                        $location.url("user/" + _userId + "/website");
+                    })
             }
         }
 
@@ -41,8 +49,10 @@
         }
 
         function deleteWebsite(){
-            websiteService.deleteWebsite(_websiteId);
-            $location.url("user/"+_userId+"/website");
+            websiteService.deleteWebsite(_websiteId)
+                .then(function(response){
+                    $location.url("user/"+_userId+"/website");
+                })
         }
 
         function editWebsite(websiteId){
