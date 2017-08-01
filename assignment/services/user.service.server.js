@@ -1,4 +1,5 @@
 var app=require("../../express");
+var util=require("./utility.service.server.js");
 
 var users = [
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", isAdmin: true  },
@@ -15,7 +16,8 @@ app.delete("/api/user/:userId",deleteUser);
 
 function findUser(req,res){
     var username=req.query.username;
-    var passworrd=req.query.password;
+    var password=req.query.password;
+    console.log(req.query);
     var user;
 
     if(password){
@@ -29,7 +31,7 @@ function findUser(req,res){
         res.send(user);
     }
     else{
-        res.status(404);
+        res.sendStatus(404);
     }
 
 }
@@ -43,11 +45,11 @@ function _findUserByUsername(username){
     return null;
 }
 
-function _findUserByCredentials(user){
+function _findUserByCredentials(username,password){
     for(var idx in users){
         var _user=users[idx];
-        if(_user.username===user.username
-            && _user.password===user.password)
+        if(_user.username===username
+            && _user.password===password)
         {
             return _user;
         }
@@ -57,17 +59,17 @@ function _findUserByCredentials(user){
 
 function createUser(req,res){
     var user=req.body;
-    res.send(createObjet(user,users));
+    res.send(util.createObjet(user,users));
 }
 
 function findUserById(req, res){
     var userId=req.params.userId;
-    var user=findOjectByObjectId(userId,users);
+    var user=util.findOjectByObjectId(userId,users);
     if(user){
         res.send(user);
     }
     else{
-        res.status(404);
+        res.sendStatus(404);
     }
 }
 
@@ -75,18 +77,18 @@ function updateUser(req,res){
     var userId=req.params.userId;
     var user=req.body;
 
-    var sts=updateObject(userId,user,users);
+    var sts=util.updateObject(userId,user,users);
     if(!sts){
-        res.send(400);
+        res.sendStatus(404);
     }
 }
 
 function deleteUser(req,res){
     var userId=req.params.userId;
 
-    var sts=deleteObject(userId,users);
+    var sts=util.deleteObject(userId,users);
     if(!sts){
-        res.send(400);
+        res.sendStatus(404);
     }
 }
 

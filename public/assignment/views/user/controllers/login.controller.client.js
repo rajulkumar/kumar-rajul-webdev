@@ -16,19 +16,21 @@
         init();
 
         function login(user){
+
             if(!user)
             {
                 model.errorMessage="Please provide user credentials"
             }
             else {
-                var userInfo = userService.findUserByCredentials(user);
-
-                if (userInfo === null) {
-                    model.errorMessage = "Invalid credentials";
-                }
-                else {
-                    $location.url("user/" + userInfo._id);
-                }
+                userService.findUserByCredentials(user)
+                    .then(function (userInfo) {
+                        if (userInfo === null) {
+                            model.errorMessage = "Invalid credentials";
+                        }
+                        else {
+                            $location.url("user/" + userInfo._id);
+                        }
+                    });
             }
         }
 

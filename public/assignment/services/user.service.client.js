@@ -5,7 +5,7 @@
 
     function userService($http){
 
-        return api={
+        return {
             "createUser":createUser,
             "findUserByUserId":findUserByUserId,
             "findUserByUsername":findUserByUsername,
@@ -15,52 +15,65 @@
         };
 
         function createUser(user){
-            return createObjet(user,users);
+            return $http.post("/api/user/",user)
+                .then(function(response){
+                    return response.data;
+                })
         }
 
         function findUserByUserId(userId){
-            return findOjectByObjectId(userId,users);
+            return $http.get("/api/user/"+userId)
+                .then(function (response){
+                    if(response.status==200){
+                        return response.data;
+                    }
+                 },function(err){
+                    return null;
+                })
         }
 
         function findUserByUsername(username){
             return $http.get("/api/user?username="+username)
-                .then(function (response){
-                    return response.data;
+                .then(function (response) {
+                    if (response.status == 200) {
+                        return response.data;
+                    }
+                },function(err){
+                        return null;
                 });
         }
 
         function findUserByCredentials(user){
-            return $http.get("/api/user?username="+username+"password="+password)
+            return $http.get("/api/user?username="+user.username+"&password="+user.password)
                 .then(function (response){
-                   return response.data;
+                    if(response.status==200) {
+                        return response.data;
+                    }
+                },function(err){
+                    return null;
                 });
         }
 
         function updateUser(userId, user){
-            for(var idx in users){
-                if(users[idx]._id===userId)
-                {
-                    users[idx]=user;
-                    return 1;
-                }
-            }
-            return null;
+            return $http.put("/api/user/"+userId,user)
+                .then(function (response){
+                    if(response.status==200){
+                        return "Updated";
+                    }
+                },function(err){
+                    return null;
+                })
         }
 
         function deleteUser(userId){
-            var id;
-            for(var idx in users){
-                if(users[idx]._id===userId)
-                {
-                   id=idx;
-                   break;
-
-                }
-            }
-            if(id) {
-                return users.splice(id, 1);
-            }
-            return null;
+            return $http.delete("/api/user/"+userId)
+                .then(function (response){
+                    if(response.status==200){
+                        return "Deleted "+userId;
+                    }
+                },function(err){
+                    return null;
+                })
         }
 
     }

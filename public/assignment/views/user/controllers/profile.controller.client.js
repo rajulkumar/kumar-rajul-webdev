@@ -10,12 +10,17 @@
         model.logout=logout
         model.ok=profileOk
         model.profile=profile
+        model.unregister=unregister;
 
 
         var userId=$routeParams["userId"];
 
         function init(){
-            model.user=userService.findUserByUserId(userId);
+            userService.findUserByUserId(userId)
+                .then(function (user){
+                    model.user=user;
+                });
+
         }
         init();
 
@@ -32,16 +37,29 @@
         }
 
         function profileOk(userId,user){
-            if(userService.updateUser(userId,user)){
-                model.updateMessage="Update successful";
-            }
-            else
-            {
-                model.errorMessage="Update error";
-            }
+            userService.updateUser(userId,user)
+                .then(function (response){
+                if(response){
+                    model.updateMessage="Update successful";
+                }
+                else {
+                    model.errorMessage = "Update error";
+                }
+            });
+        }
+
+        function unregister(){
+            userService.deleteUser(userId)
+                .then(function (response){
+                    if(response){
+                        model.deleteMessage="User deleted";
+                    }
+                });
         }
 
         function profile(userId){
+            model.updateMessage=null;
+            model.erroeMessage=null;
             $location.url("user/"+userId);
 
         }

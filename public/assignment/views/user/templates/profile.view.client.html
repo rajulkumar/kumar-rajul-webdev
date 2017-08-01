@@ -12,7 +12,9 @@
 
 <div class="container-fluid">
     <div ng-show="model.errorMessage" class="alert alert-danger">{{model.errorMessage}}</div>
-    <div ng-show="model.    updateMessage" class="alert alert-success">{{model.updateMessage}}</div>
+    <div ng-show="model.updateMessage" class="alert alert-success">{{model.updateMessage}}</div>
+    <!--<div ng-show="model.deleteMessage" class="alert alert-success">{{model.deleteMessage}}</div>-->
+
     <label for="username">Username</label>
     <input name="username"
            ng-model="model.user.username"
@@ -43,13 +45,18 @@
            class="form-control"
            id="last-name"/>
 
-    <a class="btn btn-default btn-primary btn-block"
+    <a ng-show="!model.deleteMessage" class="btn btn-default btn-primary btn-block"
        ng-click="model.website(model.user._id)"
        role="button">Websites</a>
 
-    <a class="btn btn-default btn-danger btn-block"
+    <a class="btn btn-default btn-warning btn-block"
        ng-click="model.logout()"
        role="button">Logout</a>
+
+    <!--<a ng-show="!model.deleteMessage" class="btn btn-default btn-danger btn-block"
+       ng-click="model.unregister()"
+       role="button">Delete User</a>-->
+
 </div>
 
 <nav class="navbar navbar-fixed-bottom">

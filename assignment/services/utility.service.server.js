@@ -2,6 +2,13 @@ function _generateId(){
     return Math.floor(Math.random()*1000).toString();
 }
 
+module.exports={
+    createObject:createObjet,
+    findOjectByObjectId:findOjectByObjectId,
+    updateObject:updateObject,
+    deleteObject:deleteObject
+}
+
 function createObjet(object,list){
     var id=_generateId();
     object["_id"]=id;
