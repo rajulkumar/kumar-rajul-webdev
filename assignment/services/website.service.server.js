@@ -31,7 +31,7 @@ function findAllWebsitesForUser(req,res) {
             webs.push(websites[idx]);
         }
     }
-    if(webs.isEmpty()){
+    if(webs.length==0){
         res.send("Not found");
     }
     else{
