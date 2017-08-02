@@ -23,8 +23,10 @@
                 userService.findUserByUsername(user.username)
                     .then(function (response) {
                         if(!response) {
-                            var _userId = userService.createUser(user);
-                            $location.url("user/" + _userId);
+                            userService.createUser(user)
+                                .then(function(_userId) {
+                                    $location.url("user/" + _userId);
+                                });
                         }
                         else{
                             model.errorMessage="User already exist";

@@ -3,13 +3,13 @@ function _generateId(){
 }
 
 module.exports={
-    createObject:createObjet,
+    createObject:createObject,
     findOjectByObjectId:findOjectByObjectId,
     updateObject:updateObject,
     deleteObject:deleteObject
 }
 
-function createObjet(object,list){
+function createObject(object,list){
     var id=_generateId();
     object["_id"]=id;
     list.push(object);

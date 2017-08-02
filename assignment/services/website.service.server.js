@@ -20,7 +20,7 @@ app.delete("/api/website/:websiteId",deleteWebsite);
 function createWebsite(req, res) {
     var website=req.body;
     website["developerId"]=req.params.userId;
-    res.send(createObjet(website,websites));
+    res.send(util.createObject(website,websites));
 }
 
 function findAllWebsitesForUser(req,res) {
@@ -41,7 +41,7 @@ function findAllWebsitesForUser(req,res) {
 
 function findWebsiteById(req,res) {
     var websiteId=req.params.websiteId;
-    var webs=findOjectByObjectId(websiteId,websites);
+    var webs=util.findOjectByObjectId(websiteId,websites);
     if(webs){
         res.send(webs);
     }
@@ -53,9 +53,9 @@ function findWebsiteById(req,res) {
 function updateWebsite(req,res) {
     var websiteId=req.params.websiteId;
     var website=req.body;
-    var upd=updateObject(websiteId,website,websites);
+    var upd=util.updateObject(websiteId,website,websites);
     if(upd){
-        res.send(upd);
+        res.send(upd.toString());
     }
     else{
         res.send("Not found");
@@ -64,7 +64,7 @@ function updateWebsite(req,res) {
 
 function deleteWebsite(req,res) {
     var websiteId=req.params.websiteId;
-    if(deleteObject(websiteId,websites)){
+    if(util.deleteObject(websiteId,websites)){
         res.send("Success");
     }
     else{

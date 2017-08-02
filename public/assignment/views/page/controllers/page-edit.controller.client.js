@@ -25,11 +25,15 @@
         function init(){
             pageService.findPageById(_pageId)
                 .then(function(page){
-                    model.page=page;
+                    if(page!="Not found") {
+                        model.page = page;
+                    }
                 })
             pageService.findPageByWebsiteId(_websiteId)
                 .then(function(pages){
-                    model.pages=pages;
+                    if(pages!="Not found") {
+                        model.pages = pages;
+                    }
                 })
         }
         init();

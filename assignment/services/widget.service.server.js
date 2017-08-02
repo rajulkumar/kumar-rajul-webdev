@@ -26,7 +26,7 @@ app.delete("/api/widget/:widgetId",deleteWidget);
 function createWidget(req,res) {
     var widget=req.body;
     page["pageId"]=req.params.pageId;
-    res.send(createObjet(widget,widgets));
+    res.send(util.createObjet(widget,widgets));
 }
 
 function findAllWidgetsForPage(req,res) {
@@ -48,7 +48,7 @@ function findAllWidgetsForPage(req,res) {
 
 function findWidgetById(req,res) {
     var widgetId=req.params.widgetId;
-    var widget=findOjectByObjectId(widgetId,widgets);
+    var widget=util.findOjectByObjectId(widgetId,widgets);
     if(widget){
         res.send(widget);
     }
@@ -60,7 +60,7 @@ function findWidgetById(req,res) {
 function updateWidget(req,res) {
     var widgetId=req.params.widgetId;
     var widget=req.body;
-    var upd= updateObject(widgetId,widget,widgets);
+    var upd= util.updateObject(widgetId,widget,widgets);
     if(upd){
         res.send(upd);
     }
@@ -71,7 +71,7 @@ function updateWidget(req,res) {
 
 function deleteWidget(req,res) {
     var widgetId=req.params.widgetId;
-    if(deleteObject(widgetId,widgets)){
+    if(util.deleteObject(widgetId,widgets)){
         res.send("Success");
     }
     else{

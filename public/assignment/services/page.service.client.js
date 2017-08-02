@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .factory("pageService",pageService);
 
-    function pageService() {
+    function pageService($http) {
 
         return {
             "createPage": createPage,
@@ -16,7 +16,7 @@
 
         function createPage(websiteId, page) {
             page["websiteId"]=websiteId;
-            return $http.post("/api/website/"+websiteId+"/page",website)
+            return $http.post("/api/website/"+websiteId+"/page",page)
                 .then(function (response){
                     return response.data;
                 })

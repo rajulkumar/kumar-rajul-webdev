@@ -17,7 +17,7 @@ app.delete("/api/user/:userId",deleteUser);
 function findUser(req,res){
     var username=req.query.username;
     var password=req.query.password;
-    console.log(req.query);
+    //console.log(req.query);
     var user;
 
     if(password){
@@ -59,7 +59,7 @@ function _findUserByCredentials(username,password){
 
 function createUser(req,res){
     var user=req.body;
-    res.send(util.createObjet(user,users));
+    res.send(util.createObject(user,users));
 }
 
 function findUserById(req, res){
@@ -81,6 +81,9 @@ function updateUser(req,res){
     if(!sts){
         res.sendStatus(404);
     }
+    else{
+        res.sendStatus(200);
+    }
 }
 
 function deleteUser(req,res){
@@ -89,6 +92,9 @@ function deleteUser(req,res){
     var sts=util.deleteObject(userId,users);
     if(!sts){
         res.sendStatus(404);
+    }
+    else{
+        res.sendStatus(200);
     }
 }
 

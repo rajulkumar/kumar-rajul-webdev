@@ -20,7 +20,9 @@
         function init(){
             pageService.findPageByWebsiteId(_websiteId)
                 .then(function(pages){
-                    model.pages=pages;
+                    if(pages!="Not found") {
+                        model.pages = pages;
+                    }
                 })
         }
         init();

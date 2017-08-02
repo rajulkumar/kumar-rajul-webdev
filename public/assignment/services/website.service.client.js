@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .factory("websiteService",websiteService);
 
-    function websiteService() {
+    function websiteService($http) {
 
         return {
             "createWebsite": createWebsite,
@@ -23,7 +23,7 @@
         }
 
         function findWebsitesByUser(userId) {
-            return $http.get("/api/website/"+userId)
+            return $http.get("/api/user/"+userId+"/website")
                 .then(function (response){
                     return response.data;
                 })

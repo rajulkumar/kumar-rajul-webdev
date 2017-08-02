@@ -22,11 +22,15 @@
         function init(){
             websiteService.findWebsiteById(_websiteId)
                 .then(function(website){
-                    model.website=website;
+                    if(website!="Not found") {
+                        model.website = website;
+                    }
                 });
             websiteService.findWebsitesByUser(_userId)
                 .then(function(websites){
-                    model.websites=websites;
+                    if(websites!="Not found") {
+                        model.websites = websites;
+                    }
                 })
         }
         init();

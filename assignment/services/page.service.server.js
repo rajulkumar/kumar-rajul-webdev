@@ -16,7 +16,7 @@ app.delete("/api/page/:pageId",deletePage);
 function createPage(req,res) {
     var page=req.body;
     page["websiteId"]=req.params.websiteId;
-    res.send(createObjet(page,pages));
+    res.send(util.createObject(page,pages));
 
 }
 
@@ -38,7 +38,7 @@ function findAllPagesForWebsite(req,res) {
 
 function findPagesById(req,res) {
     var pageId=req.params.pageId;
-    var page=findOjectByObjectId(pageId,pages);
+    var page=util.findOjectByObjectId(pageId,pages);
     if(page){
         res.send(page);
     }
@@ -50,9 +50,9 @@ function findPagesById(req,res) {
 function updatePage(req,res) {
     var pageId=req.params.pageId;
     var page=req.body;
-    var upd= updateObject(pageId,page,pages);
+    var upd= util.updateObject(pageId,page,pages);
     if(upd){
-        res.send(upd);
+        res.send(upd.toString());
     }
     else{
         res.send("Not found");
@@ -61,7 +61,7 @@ function updatePage(req,res) {
 
 function deletePage(req,res) {
     var pageId=req.params.pageId;
-    if(deleteObject(pageId,pages)){
+    if(util.deleteObject(pageId,pages)){
            res.send("Success");
     }
     else{
