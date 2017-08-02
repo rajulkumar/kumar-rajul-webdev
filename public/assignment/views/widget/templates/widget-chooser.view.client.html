@@ -10,10 +10,20 @@
 
 <div class="container-fluid">
     <ul class="list-group">
+
         <li ng-repeat="widget in model.widgets">
-            <a class="btn btn-link"
-               ng-click="model.getWidgetUrl(widget._id)">{{widget.widgetType}}</a>
+            <div ng-switch="model.widgetsFound">
+                <div ng-switch-when="true">
+                    <a class="btn btn-link"
+                       ng-click="model.getWidgetUrl(widget._id)">{{widget.widgetType}}</a>
+                </div>
+                <div ng-switch-when="false">
+                    <a class="btn btn-link"
+                       ng-click="model.createWidget(widget)">{{widget.widgetType}}</a>
+                </div>
+            </div>
         </li>
+
     </ul>
 </div>
 

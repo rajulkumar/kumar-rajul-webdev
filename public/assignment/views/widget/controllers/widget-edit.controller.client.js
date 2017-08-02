@@ -25,10 +25,13 @@
         function init(){
             widgetService.findWidgetById(_widgetId)
                 .then(function(widget){
-                    model.widget=widget;
+                    if(widget!="Not found") {
+                        model.widget = widget;
+                        if(model.widget.size!=null)
+                            model.widget.size = model.widget.size.toString();
+                    }
                 });
-            if(model.widget.size!=null)
-                model.widget.size = model.widget.size.toString();
+
         }
         init();
 
@@ -51,7 +54,8 @@
         }
 
         function getWidgetEditUrl(widgetType) {
-            return "views/widget/editors/widget-" + widgetType.toLowerCase() + "-edit.view.client.html";
+            if(widgetType)
+                return "views/widget/editors/widget-" + widgetType.toLowerCase() + "-edit.view.client.html";
         }
 
         function profile(){

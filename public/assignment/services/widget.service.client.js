@@ -10,14 +10,13 @@
             "findWidgetsByPageId": findWidgetsByPageId,
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
-            "deleteWidget": deleteWidget,
-            "listWidgeTypes":listWidgetTypes
+            "deleteWidget": deleteWidget
         };
 
 
         function createWidget(pageId, widget) {
             widget["pageId"]=pageId;
-            return $http.post("/api/widget/"+pageId+"/widget",widget)
+            return $http.post("/api/page/"+pageId+"/widget",widget)
                 .then(function(response){
                     return response.data;
                 })

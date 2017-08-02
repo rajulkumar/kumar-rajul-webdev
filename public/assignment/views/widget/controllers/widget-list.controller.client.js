@@ -25,7 +25,9 @@
         function init(){
             widgetService.findWidgetsByPageId(_pageId)
                 .then(function(widgets){
-                    model.widgets=widgets;
+                    if(widgets!="Not found") {
+                        model.widgets = widgets;
+                    }
                 })
         }
         init();

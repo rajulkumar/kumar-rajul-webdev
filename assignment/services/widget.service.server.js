@@ -25,8 +25,8 @@ app.delete("/api/widget/:widgetId",deleteWidget);
 
 function createWidget(req,res) {
     var widget=req.body;
-    page["pageId"]=req.params.pageId;
-    res.send(util.createObjet(widget,widgets));
+    widget["pageId"]=req.params.pageId;
+    res.send(util.createObject(widget,widgets));
 }
 
 function findAllWidgetsForPage(req,res) {
@@ -62,7 +62,7 @@ function updateWidget(req,res) {
     var widget=req.body;
     var upd= util.updateObject(widgetId,widget,widgets);
     if(upd){
-        res.send(upd);
+        res.send(upd.toString());
     }
     else{
         res.send("Not found");
