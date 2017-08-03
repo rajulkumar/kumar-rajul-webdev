@@ -12,7 +12,9 @@
     </div>
 </nav>
 
+<!--<listSort></listSort>-->
 <div class="container-fluid">
+
     <ul class="list-group">
         <li class="widget" ng-repeat="widget in model.widgets">
             <div class="inline">
@@ -24,6 +26,7 @@
             <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
         </li>
     </ul>
+
 </div>
 
 <nav class="navbar navbar-fixed-bottom">

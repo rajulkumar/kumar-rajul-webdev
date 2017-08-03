@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("widgetListController",widgetListController);
 
-    function widgetListController($location,$routeParams,$sce,widgetService){
+    function widgetListController($scope,$location,$routeParams,$sce,widgetService){
         var model=this;
 
         model.pageList=pageList;
@@ -17,6 +17,8 @@
         var _userId=$routeParams["userId"];
         var _websiteId=$routeParams["wid"];
         var _pageId=$routeParams["pid"];
+
+        $scope.pageId=_pageId;
 
         model.userId=_userId;
         model.websiteId=_websiteId;

@@ -10,9 +10,16 @@
             "findWidgetsByPageId": findWidgetsByPageId,
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
-            "deleteWidget": deleteWidget
+            "deleteWidget": deleteWidget,
+            "updateWidgetListIndex":updateWidgetListIndex
         };
 
+        function updateWidgetListIndex(pageId,initialIndex,finalIndex){
+            return $http.put("/api/page/"+pageId+"/widget?initial="+initialIndex+"&final="+finalIndex,null)
+                .then(function (response){
+                    return response.data;
+                })
+        }
 
         function createWidget(pageId, widget) {
             widget["pageId"]=pageId;

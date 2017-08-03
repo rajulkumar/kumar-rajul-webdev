@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <ul class="list-group">
+        <li class="widget" ng-repeat="widget in model.widgets">
+            <div class="inline">
+                <a ng-click="model.editWidget(widget._id)">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </div>
+            <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
+        </li>
+    </ul>
+</div>
