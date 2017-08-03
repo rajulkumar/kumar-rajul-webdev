@@ -6,10 +6,9 @@
     function listSortDirective(widgetService,$routeParams){
         var _pageId=$routeParams['pageId'];
         function listSort(scope,element){
-            var ul = element.find("ul");
-            var startIndex = -1;
-            var endIndex = -1;
-            ul.sortable({
+            var startIndex=-1;
+            var endIndex=-1;
+            $(element).sortable({
                 start: function (event, ui) {
                     startIndex = $(ui.item).index();
                 },
@@ -24,7 +23,7 @@
             });
         }
         return {
-            templateUrl: "widget-list.html",
+            //templateUrl: "widget-list.html",
             link: listSort
         }
     }
