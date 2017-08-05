@@ -1,0 +1,48 @@
+<div class="container-fluid">
+
+    <h2 class="text-center">Search</h2>
+
+    <label for="issue">issue</label>
+    <input name="issue"
+           ng-model="model.issue.terms"
+           placeholder="search term"
+           class="form-control"
+           id="issue"/>
+
+    <label for="project">project</label>
+    <input name="project"
+           ng-model="model.issue.project"
+           placeholder="project"
+           class="form-control"
+           id="project"/>
+
+    <label for="state">state</label>
+    <input name="state"
+           ng-model="model.issue.state"
+           placeholder="[open][closed]"
+           class="form-control"
+           id="state"/>
+
+    <a class="btn btn-default btn-primary btn-block"
+       ng-click="model.search(model.issue)"
+       role="button">Search</a>
+
+
+    <div class="container-fluid">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="issueDesc in model.issueList">
+                <div class="row">
+                    <div class="col-xs-4">{{issueDesc.title}}</div>
+                    <div class="col-xs-4">{{issueDesc.body}}</div>
+                    <div class="col-xs-2">{{issueDesc.state}}</div>
+                    <div class="col-xs-2">
+                        <a ng-click="model.issueDetails(issueDesc)">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>

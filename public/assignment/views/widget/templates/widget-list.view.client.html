@@ -13,9 +13,8 @@
 </nav>
 
 <div class="container-fluid">
+    <ul class="list-group" list-sort>
 
-    <ul class="list-group">
-        <listSort>
         <li class="widget" ng-repeat="widget in model.widgets">
             <div class="inline">
                 <a ng-click="model.editWidget(widget._id)">
@@ -25,7 +24,7 @@
             </div>
             <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
         </li>
-        </listSort>
+
     </ul>
 
 </div>
