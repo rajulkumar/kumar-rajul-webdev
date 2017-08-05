@@ -3,7 +3,7 @@
         .module("ProjectX")
         .controller("issueController",issueController);
 
-    function issueController($location,issueService){
+    function issueController($location,$rootScope,issueService){
         var model=this;
 
         model.search=search;
@@ -21,8 +21,8 @@
                 });
         }
 
-        function issueDetails(issueId){
-            $location("/issueId");
+        function issueDetails(project,issueId){
+            $location.url("/project/"+project+"/issue/"+issueId);
         }
     }
 })();

@@ -5,7 +5,8 @@
 
     function issueService($http){
         return {
-            "search":search
+            "search":search,
+            "findIssueByIssueId":findIssueByIssueId
 
         };
 
@@ -28,6 +29,16 @@
                       return response.data;
                   }
                 })
+        }
+
+        function findIssueByIssueId(repo,issueId){
+            var url="https://api.github.com/";
+           return $http.get(url+repo+"/issues/"+issueId)
+               .then(function (response){
+                   if(response.status==200){
+                       return response.data;
+                   }
+               })
         }
     }
 })();

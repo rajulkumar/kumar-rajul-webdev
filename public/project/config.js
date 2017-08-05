@@ -10,6 +10,11 @@
                 controller: "issueController",
                 controllerAs: "model"
             })
+            .when("/project/:project/issue/:issueId",{
+                templateUrl:"views/templates/issue-details.view.client.html",
+                controller: "issueDetailsController",
+                controllerAs: "model"
+            })
     }
 
 })();

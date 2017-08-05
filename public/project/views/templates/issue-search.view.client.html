@@ -36,7 +36,7 @@
                     <div class="col-xs-4">{{issueDesc.body}}</div>
                     <div class="col-xs-2">{{issueDesc.state}}</div>
                     <div class="col-xs-2">
-                        <a ng-click="model.issueDetails(issueDesc)">
+                        <a ng-click="model.issueDetails(model.issue.project,issueDesc.number)">
                             <span class="glyphicon glyphicon-cog pull-right"></span>
                         </a>
                     </div>
