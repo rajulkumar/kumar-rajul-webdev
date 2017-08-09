@@ -47,9 +47,7 @@
             widgetService
                 .updateImageUrl(_widgetId, url)
                 .then(function (reponse){
-                    if(reponse=="Success"){
                         $location.url("/user/"+_userId+"/website/"+_websiteId+"/page/"+_pageId+"/widget/"+_widgetId);
-                    }
                 });
         }
 

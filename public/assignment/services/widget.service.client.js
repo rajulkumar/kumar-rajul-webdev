@@ -62,7 +62,10 @@
             return findWidgetById(widgetId)
                 .then(function (widget){
                     widget.url=url;
-                    return updateWidget(widgetId,widget);
+                    return updateWidget(widgetId,widget)
+                        .then(function (response){
+                            return response;
+                        });
                 })
         }
 
