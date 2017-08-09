@@ -1,0 +1,32 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-nav navbar-brand"
+           ng-click="model.editImage()">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="navbar-brand">Search Flickr</a>
+    </div>
+</nav>
+<div class="input-group">
+    <input ng-model="model.searchText" type="text" class="form-control">
+    <span class="input-group-btn">
+        <a ng-click="model.searchPhotos(model.searchText)" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+</div>
+<div class="row">
+    <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
+        <img ng-click="model.selectPhoto(photo)"
+             ng-src="https://farm{{photo.farm}}.staticflickr.com/
+             {{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+    </div>
+</div>
+<nav class="navbar navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a class="navbar-nav navbar-brand pull-right"
+           ng-click="model.profile()">
+            <span class="glyphicon glyphicon-user"></span>
+        </a>
+    </div>
+</nav>

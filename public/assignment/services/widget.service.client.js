@@ -11,7 +11,8 @@
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
             "deleteWidget": deleteWidget,
-            "updateWidgetListIndex":updateWidgetListIndex
+            "updateWidgetListIndex":updateWidgetListIndex,
+            "updateImageUrl":updateImageUrl
         };
 
         function updateWidgetListIndex(pageId,initialIndex,finalIndex){
@@ -54,6 +55,14 @@
             return $http.delete("/api/widget/"+widgetId)
                 .then(function(response){
                     return response.data;
+                })
+        }
+
+        function updateImageUrl(widgetId,url) {
+            return findWidgetById(widgetId)
+                .then(function (widget){
+                    widget.url=url;
+                    return updateWidget(widgetId,widget);
                 })
         }
 

@@ -128,13 +128,15 @@ function updateWidgetListIndex(req,res){
     var final=req.query.final;
     var pageId=req.params.pageId;
 
-    var index=widgets.indexOf(pageId);
+    //var index=widgets.indexOf(pageId);
     //widgets.splice(index,)
 
-    // var wids=_findWidgetsByPage(pageId);
+    var wids=_findWidgetsByPage(pageId);
     //
-    // var pInitial=wids[initial]['pIndex'];
-    // var pFinal=wids[final]['pIndex'];
+    var pInitial=wids[initial]['pIndex'];
+    var pFinal=wids[final]['pIndex'];
+
+
     //
     // function _mveTopDown(l,i,j){
     //     var tmp=l[j];

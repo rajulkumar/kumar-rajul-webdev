@@ -11,6 +11,7 @@
         model.updateWidget=updateWidget;
         model.getWidgetEditUrl=getWidgetEditUrl;
         model.profile=profile;
+        model.searchFlickr=searchFlickr;
 
         var _userId=$routeParams["userId"];
         var _websiteId=$routeParams["wid"];
@@ -60,6 +61,10 @@
 
         function profile(){
             $location.url("user/"+_userId);
+        }
+
+        function searchFlickr(){
+            $location.url("/user/"+_userId+"/website/"+_websiteId+"/page/"+_pageId+"/widget/"+_widgetId+"/search");
         }
     }
 })();
