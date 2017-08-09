@@ -128,33 +128,36 @@ function updateWidgetListIndex(req,res){
     var final=req.query.final;
     var pageId=req.params.pageId;
 
-    var wids=_findWidgetsByPage(pageId);
+    var index=widgets.indexOf(pageId);
+    //widgets.splice(index,)
 
-    var pInitial=wids[initial]['pIndex'];
-    var pFinal=wids[final]['pIndex'];
-
-    function _mveTopDown(l,i,j){
-        var tmp=l[j];
-        for(var c=j;c>i;c--){
-            l[c]=l[c-1]
-        }
-        l[i]=tmp;
-    }
-
-    function _mveBotUp(l,i,j){
-        var tmp=l[i];
-        for(var c=i;c>j;c--){
-            l[c]=l[c-1]
-        }
-        l[j]=tmp;
-    }
-
-    if(wids.length!=0) {
-        if (pInitial < pFinal) {
-            _mveTopDown(widgets, pInitial, pFinal);
-        }
-        else if(initial>final){
-            _mveBotUp(widgets, pInitial, pFinal);
-        }
-    }
+    // var wids=_findWidgetsByPage(pageId);
+    //
+    // var pInitial=wids[initial]['pIndex'];
+    // var pFinal=wids[final]['pIndex'];
+    //
+    // function _mveTopDown(l,i,j){
+    //     var tmp=l[j];
+    //     for(var c=j;c>i;c--){
+    //         l[c]=l[c-1]
+    //     }
+    //     l[i]=tmp;
+    // }
+    //
+    // function _mveBotUp(l,i,j){
+    //     var tmp=l[i];
+    //     for(var c=i;c>j;c--){
+    //         l[c]=l[c-1]
+    //     }
+    //     l[j]=tmp;
+    // }
+    //
+    // if(wids.length!=0) {
+    //     if (pInitial < pFinal) {
+    //         _mveTopDown(widgets, pInitial, pFinal);
+    //     }
+    //     else if(initial>final){
+    //         _mveBotUp(widgets, pInitial, pFinal);
+    //     }
+    // }
 }
