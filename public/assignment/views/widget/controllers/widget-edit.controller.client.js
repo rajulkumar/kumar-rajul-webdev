@@ -26,11 +26,11 @@
         function init(){
             widgetService.findWidgetById(_widgetId)
                 .then(function(widget){
-                    if(widget!="Not found") {
+
                         model.widget = widget;
                         if(model.widget.size!=null)
                             model.widget.size = model.widget.size.toString();
-                    }
+
                 });
 
         }

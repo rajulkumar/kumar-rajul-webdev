@@ -20,13 +20,13 @@
         model.pageId=_pageId;
 
         function init(){
-            model.widgets=[{"_id": "-1", "widgetType": "HEADING","size": 4, "text": "Lorem ipsum"},
-                           {"_id": "-2", "widgetType": "YOUTUBE", "width": "100%",
+            model.widgets=[{"widgetType": "HEADING","size": 4, "text": "Lorem ipsum"},
+                           { "widgetType": "YOUTUBE", "width": "100%",
                            "url": "https://youtu.be/AM2Ivdi9c4E"},
-                           {"_id": "-3", "widgetType": "IMAGE","width": "100%","url": "http://lorempixel.com/400/200/"},
-                           {"_id":"-4", "widgetType": "HTML", "text": "<p>Lorem ipsum</p>"},
-                           {"_id":"-5","widgetType":"TEXT","text":"Lorem ipsum","rows":1,"placeholder":"Lorem ipsum",
-                           "formatted":true}];
+                           {"widgetType": "IMAGE","width": "100%","url": "http://lorempixel.com/400/200/"},
+                           {"widgetType": "HTML", "text": "<p>Lorem ipsum</p>"},
+                           {"widgetType":"TEXT","text":"Lorem ipsum","rows":1,"placeholder":"Lorem ipsum",
+                           "formatted":false}];
             model.widgetsFound="false";
          }
         init();
@@ -41,8 +41,8 @@
 
         function createWidget(widget){
             widgetService.createWidget(_pageId,widget)
-                .then(function (widgetId){
-                    $location.url("user/"+_userId+"/website/"+_websiteId+"/page/"+_pageId+"/widget/"+widgetId);
+                .then(function (widget){
+                    $location.url("user/"+_userId+"/website/"+_websiteId+"/page/"+_pageId+"/widget/"+widget._id);
                 })
 
         }

@@ -1,47 +1,70 @@
-var mongoose=require('mongoose');
-var widgetSchema=require('./widget.schema.server');
-var db=require('../models.server');
+var mongoose = require('mongoose');
+var widgetSchema = require('./widget.schema.server');
+var widgetModel = mongoose.model('WidgetModel', widgetSchema);
+var pageModel = require('../page/page.model.server');
 
-var pageModel=require('../page/page.model.server');
 
-var widgetModel=mongoose.model('widgetModel',widgetSchema);
+widgetModel.createWidget = createWidget;
+widgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
+widgetModel.findWidgetById = findWidgetById;
+widgetModel.updateWidget = updateWidget;
+widgetModel.deleteWidget = deleteWidget;
+widgetModel.reorderWidget = reorderWidget;
 
-widgetModel.createWidget=createWidget;
-widgetModel.findAllWidgetsForPage=findAllWidgetsForPage;
-widgetModel.findWidgetById=findWidgetById;
-widgetModel.updateWidget=updateWidget;
-widgetModel.deleteWidget=deleteWidget;
-widgetModel.reorderWidget=reorderWidget;
+module.exports = widgetModel;
 
-module.exports=widgetModel;
-
-function createWidget(pageId,widget){
-    return widgetModel.create(widget);
+function deleteWidget(widgetId, pageId) {
+    return widgetModel
+        .remove({_id:widgetId})
+        .then(function (status) {
+            return pageModel
+                .deleteWidget(widgetId, pageId);
+        });
 }
 
-function findAllWidgetsForPage(pageId){
-    return widgetModel.find({_page:pageId});
+
+function createWidget(pageId, widget) {
+    widget._page = pageId;
+    return widgetModel
+        .create(widget)
+        .then(function (widgetDoc) {
+            var wid=widgetDoc;
+             return pageModel
+                .addWidgetForPage(pageId, widgetDoc._id)
+                 .then(function(pg){
+                     return wid;
+                 })
+        })
 }
 
-function findWidgetById(widgetId){
+
+function reorderWidget(pageId, start, end) {
+    return pageModel
+        .getAllWidgetsForPage(pageId)
+        .then(function (page) {
+            var widgetList = page.widgets;
+            var widget = widgetList.splice(start, 1)[0];
+            widgetList.splice(end, 0, widget);
+            return pageModel
+                .update({_id:pageId},{$set: {widgets: widgetList}})
+        })
+
+}
+
+
+
+function findWidgetById(widgetId) {
     return widgetModel.findById(widgetId);
 }
 
-function updateWidget(widgetId,widget){
-    return widgetModel.update({_id:widgetId},{$set:widget});
+
+function findAllWidgetsForPage(pageId) {
+    return pageModel
+        .findPageById(pageId)
+        .populate('widgets')
+        .exec();
 }
 
-function deleteWidget(widgetId){
-
-}
-
-function reorderWidget(pageId,start,end){
-    return pageModel.findById(pageId)
-        .then(function (page){
-            page.widgets.splice();
-            return pageModel.updatePage(pageId,page)
-                .then(function(response){
-                    return response;
-                })
-        })
+function updateWidget(widgetId, widget) {
+    return widgetModel.update({_id: widgetId}, {$set: widget});
 }

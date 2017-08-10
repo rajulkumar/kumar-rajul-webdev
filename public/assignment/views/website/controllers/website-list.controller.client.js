@@ -17,9 +17,9 @@
         function init(){
             websiteService.findWebsitesByUser(_userId)
                 .then(function (websites){
-                    if(websites!="Not found") {
+                    //if(websites!="Not found") {
                         model.websites = websites;
-                    }
+                    //}
                 })
         }
         init();

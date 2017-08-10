@@ -22,10 +22,10 @@
             {
                 userService.findUserByUsername(user.username)
                     .then(function (response) {
-                        if(!response) {
+                        if(response.length==0) {
                             userService.createUser(user)
-                                .then(function(_userId) {
-                                    $location.url("user/" + _userId);
+                                .then(function(user) {
+                                    $location.url("user/" + user._id);
                                 });
                         }
                         else{
