@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("widgetListController",widgetListController);
 
-    function widgetListController($scope,$location,$routeParams,$sce,widgetService){
+    function widgetListController($scope,$location,$routeParams,$sce,widgetService,pageService){
         var model=this;
 
         model.pageList=pageList;
@@ -25,10 +25,20 @@
         model.pageId=_pageId;
 
         function init(){
-            widgetService.findWidgetsByPageId(_pageId)
-                .then(function(widgets){
-                    if(widgets!="Not found") {
-                        model.widgets = widgets;
+            // widgetService.findWidgetsByPageId(_pageId)
+            //     .then(function(widgets){
+            //         if(widgets!="Not found") {
+            //             model.widgets = widgets;
+            //         }
+            //     })
+            model.widgets=[];
+            pageService.findPageById(_pageId)
+                .then(function (page){
+                    for(var idx in page.widgets){
+                        widgetService.findWidgetById(page.widgets[idx])
+                            .then(function(widget){
+                                model.widgets.push(widget);
+                            })
                     }
                 })
         }

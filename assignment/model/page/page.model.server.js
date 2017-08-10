@@ -10,16 +10,16 @@ pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
 pageModel.addWidgetForPage = addWidgetForPage;
 pageModel.deleteWidget = deleteWidget;
-pageModel.getAllWidgetsForPage = getAllWidgetsForPage;
+//pageModel.getAllWidgetsForPage = getAllWidgetsForPage;
 
 
 module.exports = pageModel;
 
 
-function getAllWidgetsForPage(pageId) {
-    return pageModel
-        .find({_id:pageId});
-}
+// function getAllWidgetsForPage(pageId) {
+//     return pageModel
+//         .find({_id:pageId});
+// }
 
 
 function deleteWidget(widgetId, pageId) {

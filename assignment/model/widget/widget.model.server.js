@@ -40,7 +40,7 @@ function createWidget(pageId, widget) {
 
 function reorderWidget(pageId, start, end) {
     return pageModel
-        .getAllWidgetsForPage(pageId)
+        .findPageById(pageId)
         .then(function (page) {
             var widgetList = page.widgets;
             var widget = widgetList.splice(start, 1)[0];

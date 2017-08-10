@@ -24,23 +24,19 @@ function uploadImage(req, res) {
     var filename = myFile.filename;     // new file name in upload folder
 
     //widget = findWidgetById(widgetId);
-    widget=util.findOjectByObjectId(widgetId,widgets);
-
-    function findWidgetById(widgetId) {
-        for(var u in widgets) {
-            if (widgets[u]._id === widgetId) {
-                return widgets[u];
-            }
-        }
-        return null;
-    }
-
-    widget.url = '/uploads/'+filename;
-    widget.width = width;
-
     var callbackUrl   = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
 
-    res.redirect(callbackUrl);
+    widgetModel.findWidgetById(widgetId)
+        .then(function (widget) {
+            widget.url = '/uploads/' + filename;
+            widget.width = width;
+            widgetModel
+                .updateWidget(widgetId, widget)
+                .then(function (status) {
+                    res.redirect(callbackUrl);
+                })
+        })
+
 }
 
 function findAllWidgetsForPage(req, res) {
