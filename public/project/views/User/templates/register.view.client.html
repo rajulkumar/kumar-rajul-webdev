@@ -1,0 +1,55 @@
+<div class="container-fluid">
+
+    <h2 class="text-center">Register</h2>
+
+    <div ng-show="model.errorMessage"
+         class="alert alert-danger">
+        {{model.errorMessage}}
+    </div>
+
+    <label for="username">Username</label>
+    <input name="username"
+           ng-model="model.user.username"
+           placeholder="Username"
+           class="form-control"
+           id="username"/>
+
+    <label for="password">Password</label>
+    <input name="password"
+           ng-model="model.user.password"
+           placeholder="Password"
+           type="password"
+           class="form-control"
+           id="password"/>
+
+    <label for="verify-password">Verify Password</label>
+    <input name="verfiy-password"
+           ng-model="model.user.verifyPass"
+           placeholder="Verfiy Password"
+           type="password"
+           class="form-control"
+           id="verify-password"/>
+
+    <label for="member-type">Memeber Type</label>
+        <div id="member-type">
+            <input ng-model="model.user.memberType" type="radio" name="member" value="Owner"> Owner<br>
+            <input ng-model="model.user.memberType" type="radio" name="member" value="developer"> Developer<br>
+            <input ng-model="model.user.memberType" type="radio" name="member" value="User" checked> User<br>
+        </div>
+
+    <label for="github-id">GitHub Id</label>
+    <input name="github-id"
+           ng-model="model.user.githubId"
+           placeholder="GitHub ID"
+           class="form-control"
+           id="github-id"/>
+
+
+    <a class="btn btn-default btn-primary btn-block"
+       ng-click="model.register(model.user)"
+       role="button">Register</a>
+
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.cancel()"
+       role="button">Cancel</a>
+</div>
