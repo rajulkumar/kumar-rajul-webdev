@@ -10,7 +10,7 @@ app.put("/api/projectx/user/:userId",updateUser);
 
 function login(req,res){
     var user=req.body;
-    userModel.findUserByCredentials(user.username,user.password)
+    userModel.findUserByCreds(user.username,user.password)
         .then(function (userDoc){
             return res.json(userDoc);
     },function(err){
@@ -24,7 +24,7 @@ function createUser(req,res){
         .then(function (userDoc){
             res.json(userDoc);
         },function(err){
-            res.statusCode(500).send(err);
+            res.send(err);
         })
 }
 

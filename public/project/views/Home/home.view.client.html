@@ -1,8 +1,15 @@
 <div class="container-fluid">
     <a class="btn btn-primary btn-block center-block"
-       ng-click="model.login()">Login</a>
+       ng-click="model.login()"
+       ng-show="!model.userId">Login</a>
 
     <a class="btn btn-primary btn-block center-block"
+       ng-show="model.userId"
        ng-click="model.profile()">Profile</a>
 
+    <a class="btn btn-primary btn-danger center-block"
+       ng-show="model.userId"
+       ng-click="model.logout()">Logout</a>
+
+    <label>root:{{model.userId}}</label>
 </div>

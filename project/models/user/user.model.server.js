@@ -1,7 +1,7 @@
 var mongoose=require('mongoose');
 var userSchema=require('./user.schema.server');
 
-var userModel=mongoose.model('UserModel',userSchema);
+var userModel=mongoose.model('PxUserModel',userSchema);
 
 userModel.findUserByCreds=findUserByCreds;
 userModel.createUser=createUser;
@@ -11,7 +11,7 @@ userModel.updateUser=updateUser;
 
 module.exports=userModel;
 
-function findUserByCreds(username,passoword){
+function findUserByCreds(username,password){
     return userModel.findOne({username:username,password:password});
 }
 

@@ -3,7 +3,7 @@
         .module("ProjectX")
         .controller("loginController",loginController);
 
-    function loginController($location,$window,userService){
+    function loginController($location,$rootScope,$window,userService){
         var model=this;
 
         model.login=login;
@@ -18,13 +18,17 @@
             userService.login(username,password)
                 .then(function (user){
                     if(user){
-                        $rootScope.user=user._id;
+                        $rootScope.userId=user._id;
                         $rootScope.username=user.firstName;
-                        $window.back();
+                        $window.history.back();
                     }else{
                         model.errorMessage="Invalid credential or user ot found";
                     }
                 })
+        }
+
+        function register(){
+            $location.url("/register");
         }
     }
 })();

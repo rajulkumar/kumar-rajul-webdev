@@ -7,7 +7,7 @@ var userSchema=mongoose.Schema({
     lastName:String,
     email:String,
     githubId:String,
-    memberType:{type:String,enum:['OWNER','DEV','USER']},
+    memberType:{type:String,enum:['Owner','Developer','User']},
     follows:[{type:mongoose.Schema.Types.ObjectId,ref:'FollowModel'}],
     dateCreated:{type:Date,default:Date.now}
 },{collection:"user"});

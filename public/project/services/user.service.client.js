@@ -12,28 +12,28 @@
         };
 
         function login(user){
-            $http.post("/api/projectx/user/login",user)
+           return $http.post("/api/projectx/user/login",user)
                 .then(function(response){
                     return response.data;
                 })
         }
 
         function createUser(user){
-            $http.post("/api/projectx/user/create",user)
+            return $http.post("/api/projectx/user/create",user)
                 .then(function(response){
                     return response.data;
                 })
         }
 
         function findUserById(userId){
-            $http.get("/api/projectx/user/"+userId)
+            return $http.get("/api/projectx/user/"+userId)
                 .then(function(response){
                     return response.data;
                 })
         }
 
         function updateUser(userId,user){
-            $http.put("/api/projectx/user/"+userId,user)
+            return $http.put("/api/projectx/user/"+userId,user)
                 .then(function(response){
                     return response.data;
                 })
