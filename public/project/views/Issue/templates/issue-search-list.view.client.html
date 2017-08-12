@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="issueDesc in model.issueList">
+            <div class="row">
+                <div class="col-xs-4">{{issueDesc.title}}</div>
+                <div class="col-xs-4">{{issueDesc.body}}</div>
+                <div class="col-xs-2">{{issueDesc.state}}</div>
+                <div class="col-xs-2">
+                    <a ng-click="model.issueDetails(issueDesc)">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

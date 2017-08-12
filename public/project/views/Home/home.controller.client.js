@@ -3,12 +3,14 @@
         .module("ProjectX")
         .controller("homeController",homeController);
 
-    function homeController($location,$rootScope){
+    function homeController($location,$rootScope,userService,issueService){
         var model=this;
 
         model.login=login;
         model.profile=profile;
         model.logout=logout;
+        model.search=search;
+        model.issueDetails=issueDetails;
 
         function init(){
             model.userId=$rootScope.userId;
@@ -33,6 +35,44 @@
             }
 
             $location.url("/");
+        }
+
+        function search(domain,searchText){
+            var valid=true;
+            if(domain==""){
+                model.errorMessage="Please provide a domain to search"
+                valid=false;
+            }
+
+            if(searchText.trim()==""){
+                model.errorMessage="Please provide a search text"
+                valid=false;
+            }
+
+            if(valid){
+                if(domain=="User"){
+                    userService.findUserByName(searchText)
+                        .then(function (users){
+                            model.users=users;
+                        })
+                }
+                else if(domain=="Issue"){
+                    var issue={};
+                    issue.project="Docs";  //////////////////// To be removed/////////////////////
+                    issue.terms=searchText;
+                    issueService.search(issue)
+                        .then(function (issueList){
+                            model.issueList=issueList;
+                        })
+                }
+
+            }
+
+        }
+
+        function issueDetails(issue){
+            $rootScope.issue=issue;
+            $location.url("/issueDetails");
         }
     }
 

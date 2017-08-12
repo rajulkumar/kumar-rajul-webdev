@@ -6,8 +6,9 @@
     function issueService($http){
         return {
             "search":search,
-            "findIssueByIssueId":findIssueByIssueId
-
+            "findIssueByIssueId":findIssueByIssueId,
+            "getIssueByUrl":getIssueByUrl,
+            "getCommentsByUrl":getCommentsByUrl
         };
 
 
@@ -39,6 +40,24 @@
                        return response.data;
                    }
                })
+        }
+
+        function getIssueByUrl(issue){
+            var issueUrl=issue.url;
+            return $http.get(issueUrl)
+                .then(function (response){
+                    if(response.status==200){
+                        return response.data;
+                    }
+                })
+        }
+
+        function getCommentsByUrl(issue) {
+            var commentsUrl=issue.comments_url;
+            return $http.get(commentsUrl)
+                .then(function (response){
+                    return response.data;
+                })
         }
     }
 })();

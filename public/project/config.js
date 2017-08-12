@@ -30,6 +30,11 @@
                 controller: "profileController",
                 controllerAs: "model"
             })
+            .when("/issueDetails",{
+                templateUrl:"views/Issue/templates/issue-details.view.client.html",
+                controller: "issueDetailsController",
+                controllerAs: "model"
+            })
             .when("/project/:project/issue/:issueId",{
                 templateUrl:"views/Issue/templates/issue-details.view.client.html",
                 controller: "issueDetailsController",

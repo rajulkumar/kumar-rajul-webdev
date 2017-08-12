@@ -10,4 +10,9 @@
     <div class="col-xs-8">Created by : {{model.issueDesc.user.login}}</div>
     <div class="col-xs-8">Comments : {{model.issueDesc.comments}}</div>
         <div id="renderIssue"></div>
+
+    <div ng-repeat="comment in model.commentList">
+        {{comment}}
+    </div>
+
 </div>

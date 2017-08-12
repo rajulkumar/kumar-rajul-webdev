@@ -11,5 +11,31 @@
        ng-show="model.userId"
        ng-click="model.logout()">Logout</a>
 
+    <div class="container-fluid">
+        <div class="input-group">
+            <input ng-model="model.searchText" type="text" class="form-control">
+            <span class="input-group-addon">
+            <select ng-model="model.domain">
+                <option value="User">User</option>
+                <option value="Issue">Issue</option>
+                <option value="Blueprint">Blueprint</option>
+            </select>
+                </span>
+            <span class="input-group-btn">
+            <a ng-click="model.search(model.domain,model.searchText)" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+            </span>
+        </div>
+        <!--<div class="row">-->
+            <!--<div class="col-xs-4" ng-repeat="photo in model.photos.photo">-->
+                <!--<img ng-click="model.selectPhoto(photo)"-->
+                     <!--ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div ng-include="'views/Issue/templates/issue-search-list.view.client.html'"></div>
+
+    </div>
+
     <label>root:{{model.userId}}</label>
 </div>
