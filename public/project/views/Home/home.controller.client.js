@@ -77,7 +77,7 @@
         }
 
         function userDetails(userId){
-            $location.url("/userDetials/"+userId);
+            $location.url("/user/"+userId);
         }
     }
 

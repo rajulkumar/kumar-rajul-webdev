@@ -30,6 +30,11 @@
                 controller: "profileController",
                 controllerAs: "model"
             })
+            .when("/user/:userId",{
+                templateUrl:"views/User/templates/user-details.view.client.html",
+                controller: "userDetailController",
+                controllerAs: "model"
+            })
             .when("/issueDetails",{
                 templateUrl:"views/Issue/templates/issue-details.view.client.html",
                 controller: "issueDetailsController",

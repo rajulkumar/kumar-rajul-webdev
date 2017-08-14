@@ -1,0 +1,37 @@
+<div class="container-fluid ">
+    <h2 class="text-center">{{model.user.name}}</h2>
+    <div class="row">
+
+    <div class="col-xs-8">Username : {{model.user.username}}</div>
+    <div class="col-xs-8">Email : {{model.user.email}}</div>
+    <div class="col-xs-8">GithubID : {{model.user.githubId}}</div>
+    <div class="col-xs-8">User Type : {{model.user.memberType}}</div>
+    <div class="col-xs-8">Member since : {{model.user.dateCreated}}</div>
+    <!--<div id="renderIssue"></div>-->
+
+    <div ng-repeat="project in model.user.projects">
+        {{project}}
+    </div>
+    <div ng-repeat="issue in model.user.issues">
+        {{issue}}
+    </div>
+
+    <div ng-repeat="blueprint in model.user.blueprints">
+        {{blueprint}}
+    </div>
+    <div class="container-fluid">
+    <a ng-click="model.follow(model.user._id)"
+       class="btn btn-block btn-primarybtn btn-block btn-primary col-xs-8"
+       role="button">Follow</a>
+
+    <a ng-click="model.follow(model.user._id)"
+       class="btn btn-block btn-primarybtn btn-block btn-primary col-xs-8"
+       role="button">Unfollow</a>
+
+    <a ng-click="model.back()"
+       class="btn btn-default btn-success btn-block col-xs-8"
+       role="button">Back</a>
+    </div>
+    </div>
+
+</div>

@@ -9,8 +9,16 @@
             "createUser":createUser,
             "findUserById":findUserById,
             "updateUser":updateUser,
-            "findUsers":findUsers
+            "findUsers":findUsers,
+            "followUser":followUser
         };
+
+        function followUser(userId,followerId){
+            return $http.put("/api/projectx/user/"+userId+"/follow/"+followerId)
+                .then(function(response){
+                    return response.data;
+                })
+        }
 
         function findUsers(searchText){
             return $http.get("/api/projectx/user/search/"+searchText)
