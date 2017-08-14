@@ -6,6 +6,17 @@ app.post("/api/projectx/user/login",login);
 app.post("/api/projectx/user/create",createUser);
 app.get("/api/projectx/user/:userId",findUserById);
 app.put("/api/projectx/user/:userId",updateUser);
+app.get("/api/projectx/user/search/:searchText",findUsers);
+
+function findUsers(req,res){
+    var searchText=req.params.searchText;
+    userModel.findUser(searchText)
+        .then(function (users){
+            res.json(users)
+        },function(err){
+            res.statusCode(500).send(err);
+        })
+}
 
 
 function login(req,res){

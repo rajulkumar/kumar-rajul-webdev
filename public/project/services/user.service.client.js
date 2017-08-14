@@ -8,8 +8,16 @@
             "login":login,
             "createUser":createUser,
             "findUserById":findUserById,
-            "updateUser":updateUser
+            "updateUser":updateUser,
+            "findUsers":findUsers
         };
+
+        function findUsers(searchText){
+            return $http.get("/api/projectx/user/search/"+searchText)
+                .then(function(response){
+                    return response.data;
+                })
+        }
 
         function login(user){
            return $http.post("/api/projectx/user/login",user)

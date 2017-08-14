@@ -3,8 +3,7 @@ var mongoose=require('mongoose');
 var userSchema=mongoose.Schema({
     username:String,
     password:String,
-    firstName:String,
-    lastName:String,
+    name:String,
     email:String,
     githubId:String,
     memberType:{type:String,enum:['Owner','Developer','User']},

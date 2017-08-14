@@ -11,6 +11,7 @@
         model.logout=logout;
         model.search=search;
         model.issueDetails=issueDetails;
+        model.userDetails=userDetails;
 
         function init(){
             model.userId=$rootScope.userId;
@@ -51,7 +52,7 @@
 
             if(valid){
                 if(domain=="User"){
-                    userService.findUserByName(searchText)
+                    userService.findUsers(searchText)
                         .then(function (users){
                             model.users=users;
                         })
@@ -73,6 +74,10 @@
         function issueDetails(issue){
             $rootScope.issue=issue;
             $location.url("/issueDetails");
+        }
+
+        function userDetails(userId){
+            $location.url("/userDetials/"+userId);
         }
     }
 

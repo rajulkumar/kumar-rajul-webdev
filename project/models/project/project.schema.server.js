@@ -4,8 +4,8 @@ var projectSchema = mongoose.Schema({
     title: String,
     purpose:String,
     description: String,
-    owner:{type:mongoose.Schema.Types.ObjectId,ref:'UserModel'},
-    members:[{type:mongoose.Schema.Types.ObjectId,ref:'UserModel'}],
+    owner:{type:mongoose.Schema.Types.ObjectId,ref:'PxUserModel'},
+    members:[{type:mongoose.Schema.Types.ObjectId,ref:'PxUserModel'}],
     created:{type:Date|Date.now},
     githubUrl:String,
     token:String

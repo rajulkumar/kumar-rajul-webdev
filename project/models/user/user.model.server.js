@@ -7,7 +7,11 @@ userModel.findUserByCreds=findUserByCreds;
 userModel.createUser=createUser;
 userModel.findUserById=findUserById;
 userModel.updateUser=updateUser;
-
+//userModel.updateProject=updateProject;
+//userModel.updateIssue=updateIssue;
+//userModel.updateBlueprint=updateBlueprint;
+userModel.updateFollower=updateFollower;
+userModel.findUser=findUser;
 
 module.exports=userModel;
 
@@ -25,4 +29,19 @@ function findUserById(userId){
 
 function updateUser(userId,user){
     return userModel.update({_id:userId},{$set:user});
+}
+
+function updateFollower(userId,followerId){
+    return userModel.findById(userId)
+        .then(function (user){
+            user.followers.push(followerId);
+            return user.save();
+        })
+}
+
+function findUser(searchTerm){
+    return userModel.find({$or:[{name:{$in:[new RegExp(searchTerm,"i")]}},
+        {username:{$in:[new RegExp(searchTerm,"i")]}},
+        {githubId:{$in:[new RegExp(searchTerm,"i")]}}]});
+
 }

@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <h2 class="text-center">Issue details</h2>
+
+    <div class="col-xs-8">ID : {{model.issueDesc.number}}</div>
+    <div class="col-xs-8">Title : {{model.issueDesc.title}}</div>
+    <div class="col-xs-8">Desc : {{model.issueDesc.body}}</div>
+    <div class="col-xs-8">Status : {{model.issueDesc.state}}</div>
+    <div class="col-xs-8">Created : {{model.issueDesc.created_at}}</div>
+    <div class="col-xs-8">Updated : {{model.issueDesc.updated_at}}</div>
+    <div class="col-xs-8">Created by : {{model.issueDesc.user.login}}</div>
+    <div class="col-xs-8">Comments : {{model.issueDesc.comments}}</div>
+    <div id="renderIssue"></div>
+
+    <div ng-repeat="comment in model.commentList">
+        {{comment}}
+    </div>
+
+</div>
