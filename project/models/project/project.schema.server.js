@@ -9,6 +9,6 @@ var projectSchema = mongoose.Schema({
     created:{type:Date|Date.now},
     githubUrl:String,
     token:String
-});
+},{collection:"project"});
 
 module.exports=projectSchema;
