@@ -19,7 +19,8 @@ function followUser(req,res){
             user.followers.push(followerId);
             user.save()
                 .then(function (response){
-                    followerModel.findFollowerById(followerId)
+                    //followerModel.findFollowerById(followerId)
+                    followerModel.findFollowerByUserId(followerId)
                         .then(function (follower){
                             follower.user.push(userId);
                             follower.save()
@@ -56,7 +57,14 @@ function createUser(req,res){
     var user=req.body;
     userModel.createUser(user)
         .then(function (userDoc){
-            res.json(userDoc);
+            var userD=userDoc;
+            followerModel.createFollower(userDoc._id)
+                .then(function(response){
+                    res.json(userD);
+                },function(err){
+                    res.statusCode(500).send(err);
+                })
+
         },function(err){
             res.send(err);
         })

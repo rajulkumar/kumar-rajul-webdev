@@ -19,6 +19,11 @@
     <div ng-repeat="blueprint in model.user.blueprints">
         {{blueprint}}
     </div>
+
+        <div ng-repeat="follower in model.user.followers">
+            {{follower}}
+        </div>
+
     <div class="container-fluid">
     <a ng-click="model.follow(model.user._id)"
        class="btn btn-block btn-primarybtn btn-block btn-primary col-xs-8"

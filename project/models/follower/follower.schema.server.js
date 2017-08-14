@@ -6,6 +6,6 @@ var followerSchema = mongoose.Schema({
     issue:[{type:mongoose.Schema.Types.ObjectId,ref:'IssueModel'}],
     blueprint:[{type:mongoose.Schema.Types.ObjectId,ref:'BlueprintModel'}],
     project:[{type:mongoose.Schema.Types.ObjectId,ref:'ProjectModel'}]
-});
+},{collection:"follower"});
 
 module.exports=followerSchema;

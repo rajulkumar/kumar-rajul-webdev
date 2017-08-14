@@ -3,7 +3,7 @@
         .module("ProjectX")
         .controller("userDetailController",userDetailController);
 
-    function userDetailController($routeParams,$window,userService){
+    function userDetailController($routeParams,$window,$rootScope,userService){
         var model=this;
 
         model.back=back;
@@ -23,7 +23,8 @@
             $window.history.back();
         }
 
-        function follow(userId,followerId){
+        function follow(userId){
+            var followerId=$rootScope.userId;
             userService.followUser(userId,followerId)
                 .then(function (status){
                     model.following=true;
