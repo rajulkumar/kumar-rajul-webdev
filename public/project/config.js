@@ -15,6 +15,7 @@
                 controller: "issueController",
                 controllerAs: "model"
             })
+            //user configs
             .when("/login",{
                 templateUrl:"views/User/templates/login.view.client.html",
                 controller: "loginController",
@@ -35,16 +36,26 @@
                 controller: "userDetailController",
                 controllerAs: "model"
             })
+            //issue configs
             .when("/issueDetails",{
                 templateUrl:"views/Issue/templates/issue-details.view.client.html",
                 controller: "issueDetailsController",
                 controllerAs: "model"
             })
+            //project configs
             .when("/project/:project/issue/:issueId",{
                 templateUrl:"views/Issue/templates/issue-details.view.client.html",
                 controller: "issueDetailsController",
                 controllerAs: "model"
             })
+            .when("/project/register",{
+                templateUrl:"views/project/templates/project-add.view.client.html",
+                controller:"projectRegisterController",
+                controllerAs: "model"
+            })
     }
 
 })();
+
+
+

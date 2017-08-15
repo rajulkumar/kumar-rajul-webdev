@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <label for="title">Title</label>
+    <input name="title"
+           ng-model="model.project.title"
+           placeholder="Title"
+           class="form-control"
+           id="title"/>
+
+    <label for="purpose">Purpose</label>
+    <input name="purpose"
+           ng-model="model.project.purpose"
+           placeholder="Purpose"
+           class="form-control"
+           id="purpose"/>
+
+    <label for="description">Description</label>
+    <textarea name="description"
+              ng-model="model.project.description"
+              placeholder="Title"
+              class="form-control"
+              rows="20"
+              id="description"/>
+
+
+
+    <label for="owner">Owner</label>
+    <input name="owner"
+           ng-model="model.project.owner"
+           placeholder="Owner username"
+           class="form-control"
+           id="owner"/>
+
+    <!--<label for="member">Members</label>-->
+    <!--<input name="member"-->
+           <!--ng-model="model.project.member"-->
+           <!--placeholder="Title"-->
+           <!--class="form-control"-->
+           <!--id="title"/>-->
+
+    <label for="githubUrl">GitHubUrl</label>
+    <input name="githubUrl"
+           ng-model="model.project.githubUrl"
+           placeholder="GitHub URL"
+           class="form-control"
+           id="githubUrl"/>
+
+    <label for="token">Token</label>
+    <input name="token"
+           ng-model="model.project.token"
+           placeholder="GitHub token"
+           class="form-control"
+           id="token"/>
+
+   <a class="btn btn-default btn-primary btn-block"
+      ng-click="model.registerProject(model.project)"
+      role="button">Register</a>
+
+
+
+</div>

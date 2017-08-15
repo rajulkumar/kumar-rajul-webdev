@@ -10,7 +10,8 @@
             "findUserById":findUserById,
             "updateUser":updateUser,
             "findUsers":findUsers,
-            "followUser":followUser
+            "followUser":followUser,
+            "findOwner":findOwner
         };
 
         function followUser(userId,followerId){
@@ -24,6 +25,20 @@
             return $http.get("/api/projectx/user/search/"+searchText)
                 .then(function(response){
                     return response.data;
+                })
+        }
+
+        function findOwner(username){
+            return $http.get("/api/projectx/user/search/"+searchText)
+                .then(function(response){
+                    var users= response.data;
+                    var owners=[];
+                    for(var i in users){
+                        if(users[i].memberType==="Owner"){
+                            owners.push(users[i]);
+                        }
+                    }
+                    return owners;
                 })
         }
 

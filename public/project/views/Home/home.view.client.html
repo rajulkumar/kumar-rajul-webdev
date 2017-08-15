@@ -11,6 +11,14 @@
        ng-show="model.userId"
        ng-click="model.logout()">Logout</a>
 
+    <a class="btn btn-primary btn-danger center-block"
+       ng-show="model.userId"
+       ng-click="model.registerProject()">Register Project</a>
+
+    <a class="btn btn-primary btn-danger center-block"
+       ng-show="model.userId||model.owner"
+       ng-click="model.updateProject()">Update Project</a>
+
     <div class="container-fluid">
         <div class="input-group">
             <input ng-model="model.searchText" type="text" class="form-control">

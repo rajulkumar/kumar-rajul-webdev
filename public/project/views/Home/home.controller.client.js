@@ -12,6 +12,7 @@
         model.search=search;
         model.issueDetails=issueDetails;
         model.userDetails=userDetails;
+        model.registerProject=registerProject;
 
         function init(){
             model.userId=$rootScope.userId;
@@ -78,6 +79,10 @@
 
         function userDetails(userId){
             $location.url("/user/"+userId);
+        }
+
+        function registerProject(){
+            $locaton.url("/project/register");
         }
     }
 

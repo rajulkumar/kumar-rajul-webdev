@@ -4,7 +4,7 @@ var projectSchema=require('./project.schema.server');
 var projectModel=mongoose.model('ProjectModel',projectSchema);
 
 projectModel.createProject=createProject;
-projectModel.updateProject=updateProject;
+projectModel.findProjectById=findProjectById;
 
 
 module.exports=projectModel;
