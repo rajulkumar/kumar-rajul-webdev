@@ -53,6 +53,11 @@
                 controller:"projectRegisterController",
                 controllerAs: "model"
             })
+            .when("/project/list",{
+                templateUrl:"views/project/templates/project-list.view.client.html",
+                controller:"projectListController",
+                controllerAs: "model"
+            })
     }
 
 })();

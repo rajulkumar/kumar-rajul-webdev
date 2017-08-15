@@ -6,6 +6,7 @@ var userModel=mongoose.model('PxUserModel',userSchema);
 userModel.findUserByCreds=findUserByCreds;
 userModel.createUser=createUser;
 userModel.findUserById=findUserById;
+userModel.findUserByUsername=findUserByUsername;
 userModel.updateUser=updateUser;
 //userModel.updateProject=updateProject;
 //userModel.updateIssue=updateIssue;
@@ -14,6 +15,10 @@ userModel.updateFollower=updateFollower;
 userModel.findUser=findUser;
 
 module.exports=userModel;
+
+function findUserByUsername(username){
+    return userModel.findOne({username:username});
+}
 
 function findUserByCreds(username,password){
     return userModel.findOne({username:username,password:password});

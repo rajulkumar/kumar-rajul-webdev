@@ -82,7 +82,7 @@
         }
 
         function registerProject(){
-            $locaton.url("/project/register");
+            $location.url("/project/register");
         }
     }
 

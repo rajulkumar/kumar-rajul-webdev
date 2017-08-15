@@ -5,7 +5,8 @@
 
     function projectService($http){
         return {
-            "registerProject":registerProject
+            "registerProject":registerProject,
+            "listProjects":listProjects
         };
 
         function registerProject(project){
@@ -15,5 +16,11 @@
                 })
         }
 
+        function listProjects(){
+            return $http.get("/api/projectx/project/list")
+                .then(function(response){
+                    return response.data;
+                })
+        }
     }
 })();

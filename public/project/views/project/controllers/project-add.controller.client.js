@@ -15,10 +15,10 @@
         }
         init();
 
-        function registerProject(){
-            projectService.registerProject()
+        function registerProject(project){
+            projectService.registerProject(project)
                 .then(function (status){
-                    $location.url("/")
+                    $location.url("/project/list")
                 })
         }
 
