@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <label for="title">Title</label>
+    <input name="title"
+           ng-model="model.bp.title"
+           placeholder="Title"
+           class="form-control"
+           id="title"/>
+
+    <label for="purpose">Purpose</label>
+    <input name="purpose"
+           ng-model="model.bp.purpose"
+           placeholder="Purpose"
+           class="form-control"
+           id="purpose"/>
+
+    <label for="description">Description</label>
+    <textarea name="description"
+              ng-model="model.bp.description"
+              placeholder="Title"
+              class="form-control"
+              rows="20"
+              id="description"/>
+
+    <label for="state">State</label>
+    <label id="state">{{model.state}}</label>
+
+    <label for="assigned">Assigned</label>
+    <input name="assigned"
+           ng-model="model.bp.assigned"
+           placeholder="Assignee username"
+           class="form-control"
+           id="assigned"/>
+
+
+    <a class="btn btn-default btn-primary btn-block"
+       ng-click="model.approveBp()"
+       role="button">Approve</a>
+
+    <a class="btn btn-default btn-primary btn-block"
+       ng-click="model.assignBp(model.project)"
+       role="button">Assign</a>
+
+    <a class="btn btn-default btn-primary btn-block"
+       ng-click="model.updateBp(model.project)"
+       role="button">Update</a>
+
+</div>

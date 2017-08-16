@@ -1,23 +1,32 @@
+<nav class="nav navbar navbar-fixed-top">
 <div class="container-fluid">
-    <a class="btn btn-primary btn-block center-block"
+    <div class="contianer-fluid navbar-right">
+
+    <a class="navbar-nav navbar-brand"
        ng-click="model.login()"
        ng-show="!model.userId">Login</a>
 
-    <a class="btn btn-primary btn-block center-block"
+    <a class="navbar-nav"
        ng-show="model.userId"
        ng-click="model.profile()">Profile</a>
 
-    <a class="btn btn-primary btn-danger center-block"
+    <a class="navbar-nav"
        ng-show="model.userId"
        ng-click="model.logout()">Logout</a>
 
-    <a class="btn btn-primary btn-danger center-block"
+    </div>
+
+    <div class="nav nav-tabs navbar-left">
+    <a class="navbar-nav"
        ng-show="model.userId"
        ng-click="model.registerProject()">Register Project</a>
 
-    <a class="btn btn-primary btn-danger center-block"
+    <a class="navbar-nav"
        ng-show="model.userId||model.owner"
        ng-click="model.updateProject()">Update Project</a>
+    </div>
+</div>
+</nav>
 
     <div class="container-fluid">
         <div class="input-group">
@@ -47,4 +56,3 @@
     </div>
 
     <label>root:{{model.userId}}</label>
-</div>
