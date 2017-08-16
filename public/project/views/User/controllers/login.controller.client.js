@@ -10,16 +10,28 @@
         model.register=register;
 
         function init(){
+            userService.checkLogin()
+                .then (function(user){
+                    if(user==0){
+                        $rootScope.userId=null;
+                        $rootScope.username=null;
+                    }
+                    else{
+                        $rootScope.userId=user._id;
+                        $rootScope.username=user.name;
+                    }
+                })
+
 
         }
         init();
 
-        function login(username,passowrd){
+        function login(username,password){
             userService.login(username,password)
                 .then(function (user){
                     if(user){
                         $rootScope.userId=user._id;
-                        $rootScope.username=user.firstName;
+                        $rootScope.username=user.name;
                         $window.history.back();
                     }else{
                         model.errorMessage="Invalid credential or user ot found";

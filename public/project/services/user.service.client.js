@@ -6,6 +6,8 @@
     function userService($http){
         return {
             "login":login,
+            "logout":logout,
+            "checkLogin":checkLogin,
             "createUser":createUser,
             "findUserById":findUserById,
             "updateUser":updateUser,
@@ -13,6 +15,21 @@
             "followUser":followUser,
             "findOwner":findOwner
         };
+
+        function checkLogin(){
+            return $http.get("/api/projectx/user/checkLogin")
+                .then(function(response){
+                    return response.data;
+                })
+        }
+
+        function logout(){
+            return $http.post("/api/projectx/user/logout")
+                .then(function (response){
+                    return response.statusCode;
+
+                })
+        }
 
         function followUser(userId,followerId){
             return $http.put("/api/projectx/user/"+userId+"/follow/"+followerId)
@@ -43,7 +60,7 @@
         }
 
         function login(user){
-           return $http.post("/api/projectx/user/login",user)
+           return $http.post("/api/projectx/user/login",{usernme:user.username,password:user.password})
                 .then(function(response){
                     return response.data;
                 })
