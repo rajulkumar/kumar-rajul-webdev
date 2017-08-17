@@ -1,11 +1,23 @@
 var app=require('../../express');
 
+var gitApi=require('./github.service.server');
+
 var projectModel=require("../models/project/project.model.server");
 var userModel=require("../models/user/user.model.server");
 
 app.post("/api/projectx/project/create",createProject);
 app.put("/api/projectx/project/:projectId/member/:memberId",addMember);
 app.get("/api/projectx/project/list",listProjects);
+
+app.post("/api/projectx/test",  gitproject);
+
+function gitproject(req,res){
+    var body=req.body;
+    gitApi.gitCreateProject(body.name,body.description)
+        .then(function(response){
+            res.json(response);
+        })
+}
 
 
 function createProject(req,res) {

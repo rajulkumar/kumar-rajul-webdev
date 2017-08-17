@@ -17,15 +17,16 @@
 
         function login(user){
             userService.login(user)
-                .then(function (user){
-                    if(user){
-                        $rootScope.userId=user._id;
-                        $rootScope.username=user.name;
+                .then(function (user) {
+                    if (user.data!="Unauthorized") {
+                        $rootScope.userId = user._id;
+                        $rootScope.username = user.name;
                         $window.history.back();
-                    }else{
-                        model.errorMessage="Invalid credential or user ot found";
+                    } else {
+                        model.errorMessage = "Invalid credential or user ot found";
                     }
                 })
+
         }
 
         function register(){
