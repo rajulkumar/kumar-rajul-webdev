@@ -6,9 +6,7 @@
     function homeController($location,$rootScope,userService,issueService){
         var model=this;
 
-        model.login=login;
-        model.profile=profile;
-        model.logout=logout;
+        //model.login=login;
         model.search=search;
         model.issueDetails=issueDetails;
         model.userDetails=userDetails;
@@ -20,41 +18,24 @@
                     if(user==0){
                         $rootScope.userId=null;
                         $rootScope.username=null;
+                        $rootScope.userType=user.memberType;
                     }
                     else{
                         $rootScope.userId=user._id;
                         $rootScope.username=user.name;
+                        $rootScope.userType=user.memberType;
 
                     }
 
                     model.userId=$rootScope.userId;
                     model.username=$rootScope.username;
+                    model.userType=$rootScope.userType;
                 })
-
         }
         init();
 
         function login(){
             $location.url("/login");
-        }
-
-        function profile(){
-            $location.url("/profile");
-        }
-
-        function logout(){
-            // $rootScope.userId=null;
-            // $rootScope.username=null;
-            userService.logout()
-                .then(function(res){
-                    console.log($location.pathname);
-                    if($location.path()=="/"){
-                        init();
-                    }
-
-                    $location.url("/");
-                })
-
         }
 
         function search(domain,searchText){

@@ -26,12 +26,17 @@ function createProject(req,res) {
     userModel.findUserByUsername(owner)
         .then(function (user){
             project.owner=user._id;
-            projectModel.createProject(project)
-                .then(function (project) {
-                    res.json(project);
-                }, function (err) {
-                    res.statusCode(500).send(err);
+            gitApi.createProject(project.title,project.description)
+                .then(function (projDoc){
+                    project.gitProjectId=projDoc.id;
+                    projectModel.createProject(project)
+                        .then(function (project) {
+                            res.json(project);
+                        }, function (err) {
+                            res.statusCode(500).send(err);
+                        })
                 })
+
         })
 }
 

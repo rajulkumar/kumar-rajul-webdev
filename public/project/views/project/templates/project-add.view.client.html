@@ -1,3 +1,5 @@
+<div ng-include="'views/header/templates/header.view.client.html'"></div>
+
 <div class="container-fluid">
     <label for="title">Title</label>
     <input name="title"
@@ -16,9 +18,9 @@
     <label for="description">Description</label>
     <textarea name="description"
               ng-model="model.project.description"
-              placeholder="Title"
+              placeholder="Description"
               class="form-control"
-              rows="20"
+              rows="5"
               id="description"/>
 
     <label for="owner">Owner</label>
@@ -42,12 +44,12 @@
            class="form-control"
            id="githubUrl"/>
 
-    <label for="token">Token</label>
-    <input name="token"
-           ng-model="model.project.token"
-           placeholder="GitHub token"
-           class="form-control"
-           id="token"/>
+    <!--<label for="token">Token</label>-->
+    <!--<input name="token"-->
+           <!--ng-model="model.project.token"-->
+           <!--placeholder="GitHub token"-->
+           <!--class="form-control"-->
+           <!--id="token"/>-->
 
    <a class="btn btn-default btn-primary btn-block"
       ng-click="model.registerProject(model.project)"

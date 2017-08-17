@@ -11,7 +11,16 @@
         model.selectOwner=selectOwner;
 
         function init(){
+            userService.checkLogin()
+                .then (function(user) {
+                    if (user == 0) {
+                        model.user = null;
+                    }
+                    else {
+                        model.user = user;
 
+                    }
+                })
         }
         init();
 

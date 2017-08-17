@@ -13,5 +13,26 @@ body{
 }
 
 .navbar{
+    background-color: #5e5e5e;
+}
 
+.navbar-brand {
+    color: #fff;
+    margin: auto;
+}
+
+.navbar a{
+    color: #fff;
+}
+
+.navbar button span{
+    background-color: #fff;
+}
+
+.input-group .wid{
+    width:40%;
+}
+
+.input-group .wid2{
+    width:60%;
 }

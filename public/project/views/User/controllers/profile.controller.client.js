@@ -10,11 +10,23 @@
         model.cancel=cancel;
 
         function init(){
-            var userId=$rootScope.userId;
-            userService.findUserById(userId)
-                .then(function (user){
-                    model.user=user;
+
+            userService.checkLogin()
+                .then (function(user) {
+                    if (user == 0) {
+                        model.user = null;
+                    }
+                    else {
+                        model.user = user;
+                        var userId=$rootScope.userId;
+                        userService.findUserById(userId)
+                            .then(function (user){
+                                model.user=user;
+                            })
+
+                    }
                 })
+
         }
         init();
 

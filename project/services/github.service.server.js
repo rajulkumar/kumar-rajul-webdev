@@ -1,33 +1,30 @@
-var http=require('http');
+var request=require('request-promise');
 
-var options={
-    host:'https://api.github.com'
-};
+var auth = "Basic " + new Buffer("projectx-org" + ":" + "d683b8884a6bb2bb054ba2595faf2df194504152").toString("base64");
+var options = {
+    method: 'POST',
+    uri: 'https://api.github.com/user/repos',
 
-var authOptions={
-    
-    host:'https://api.github.com',
-    auth: 'projectx-org:f60c3c81b0d8e07fd9720707ea1e942b8921d09d'
-};
-
-var callback=function(response){
-    console.log('STATUS: ' + response.statusCode);
-    console.log('HEADERS: ' + JSON.stringify(response.headers));
-    response.setEncoding('utf8');
-    response.on('data',function(chunk){
-        return chunk;
-    })
+    headers: {
+        'User-Agent': 'projectx-org',
+        'Authorization': auth
+    },
+    json: true
+    // JSON stringifies the body automatically
 };
 
 module.exports={
-    "gitCreateProject":gitCreateProject
+    "createProject":createProject
 };
 
-function gitCreateProject(title,desc){
-    authOptions.path='/user/repos';
-    authOptions.method='POST';
-    var body={"name":title,"description":desc};
-    var request=http.request(authOptions,callback);
-    request.write(body);
-    request.end();
+function createProject(title,desc) {
+    options.body={"name":title,"description":desc};
+    return request(options)
+        .then(function (response) {
+            return response;
+        })
+        .catch(function (err) {
+            console.log(err);
+        })
+
 }

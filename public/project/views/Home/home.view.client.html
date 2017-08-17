@@ -1,43 +1,53 @@
-<nav class="nav navbar navbar-fixed-top">
-<div class="container-fluid">
-    <div class="contianer-fluid navbar-right">
+<!--<nav class="nav navbar navbar-fixed-top">-->
+<!--<div class="container-fluid">-->
+    <!--<div class="contianer-fluid navbar-right">-->
 
-    <a class="navbar-nav navbar-brand"
-       ng-click="model.login()"
-       ng-show="!model.userId">Login</a>
+    <!--<a class="navbar-nav navbar-brand"-->
+       <!--ng-click="model.login()"-->
+       <!--ng-show="!model.userId">Login</a>-->
 
-    <a class="navbar-nav"
-       ng-show="model.userId"
-       ng-click="model.profile()">Profile</a>
+    <!--<a class="navbar-nav"-->
+       <!--ng-show="model.userId"-->
+       <!--ng-click="model.profile()">Profile</a>-->
 
-    <a class="navbar-nav"
-       ng-show="model.userId"
-       ng-click="model.logout()">Logout</a>
+    <!--<a class="navbar-nav"-->
+       <!--ng-show="model.userId"-->
+       <!--ng-click="model.logout()">Logout</a>-->
 
-    </div>
+    <!--</div>-->
 
-    <div class="nav nav-tabs navbar-left">
-    <a class="navbar-nav"
-       ng-show="model.userId"
-       ng-click="model.registerProject()">Register Project</a>
+    <!--<div class="nav nav-tabs navbar-left">-->
+    <!--<a class="navbar-nav"-->
+       <!--ng-show="model.userId"-->
+       <!--ng-click="model.registerProject()">Register Project</a>-->
 
-    <a class="navbar-nav"
-       ng-show="model.userId||model.owner"
-       ng-click="model.updateProject()">Update Project</a>
-    </div>
-</div>
-</nav>
+    <!--<a class="navbar-nav"-->
+       <!--ng-show="model.userId||model.owner"-->
+       <!--ng-click="model.updateProject()">Update Project</a>-->
+    <!--</div>-->
+<!--</div>-->
+<!--</nav>-->
 
+<div ng-controller="headerController" ng-include="'views/header/templates/header.view.client.html'"></div>
     <div class="container-fluid">
-        <div class="input-group">
-            <input ng-model="model.searchText" type="text" class="form-control">
-            <span class="input-group-addon">
-            <select ng-model="model.domain">
+        <div class="input-group inline">
+            <input ng-model="model.searchText" type="text" class="form-control wid2">
+            <!--<span class="input-group-addon">-->
+            <select   class="form-control wid" ng-model="model.domain">
                 <option value="User">User</option>
                 <option value="Issue">Issue</option>
                 <option value="Blueprint">Blueprint</option>
             </select>
-                </span>
+                <!--</span>-->
+            <!--<div class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"-->
+                        <!--aria-expanded="false">{{model.searchType}}<span class="caret"></span></button>-->
+                <!--<ul class="dropdown-menu">-->
+                    <!--<li><a href="#">User</a></li>-->
+                    <!--<li><a href="#">Project</a></li>-->
+                    <!--<li><a href="#">Blueprint</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
             <span class="input-group-btn">
             <a ng-click="model.search(model.domain,model.searchText)" class="btn btn-default" type="button">
                 <span class="glyphicon glyphicon-search"></span>
@@ -56,3 +66,4 @@
     </div>
 
     <label>root:{{model.userId}}</label>
+<label>root:{{model.userType}}</label>
