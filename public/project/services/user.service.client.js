@@ -60,9 +60,11 @@
         }
 
         function login(user){
-           return $http.post("/api/projectx/user/login",{usernme:user.username,password:user.password})
+           return $http.post("/api/projectx/user/login",{username:user.username,password:user.password})
                 .then(function(response){
                     return response.data;
+                },function (err) {
+                    return err;
                 })
         }
 

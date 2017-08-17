@@ -5,6 +5,7 @@ var followerModel=require("../models/follower/follower.model.server");
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);

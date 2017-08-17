@@ -15,8 +15,22 @@
         model.registerProject=registerProject;
 
         function init(){
-            model.userId=$rootScope.userId;
-            model.username=$rootScope.username;
+            userService.checkLogin()
+                .then (function(user){
+                    if(user==0){
+                        $rootScope.userId=null;
+                        $rootScope.username=null;
+                    }
+                    else{
+                        $rootScope.userId=user._id;
+                        $rootScope.username=user.name;
+
+                    }
+
+                    model.userId=$rootScope.userId;
+                    model.username=$rootScope.username;
+                })
+
         }
         init();
 
@@ -29,14 +43,18 @@
         }
 
         function logout(){
-            $rootScope.userId=null;
-            $rootScope.username=null;
-            console.log($location.pathname);
-            if($location.path()=="/"){
-                init();
-            }
+            // $rootScope.userId=null;
+            // $rootScope.username=null;
+            userService.logout()
+                .then(function(res){
+                    console.log($location.pathname);
+                    if($location.path()=="/"){
+                        init();
+                    }
 
-            $location.url("/");
+                    $location.url("/");
+                })
+
         }
 
         function search(domain,searchText){

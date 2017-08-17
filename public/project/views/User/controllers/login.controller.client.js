@@ -10,24 +10,13 @@
         model.register=register;
 
         function init(){
-            userService.checkLogin()
-                .then (function(user){
-                    if(user==0){
-                        $rootScope.userId=null;
-                        $rootScope.username=null;
-                    }
-                    else{
-                        $rootScope.userId=user._id;
-                        $rootScope.username=user.name;
-                    }
-                })
 
 
         }
         init();
 
-        function login(username,password){
-            userService.login(username,password)
+        function login(user){
+            userService.login(user)
                 .then(function (user){
                     if(user){
                         $rootScope.userId=user._id;
