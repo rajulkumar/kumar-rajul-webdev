@@ -29,9 +29,12 @@ body{
     background-color: #fff;
 }
 
-.dropdown-menu .white{
-    color:#fff;
+/*.dropdown-menu .white{*/
+    /*color:#fff;*/
+/*}*/
+
+.card{
+    padding-left: 20px;
+    padding-right: 20px;
 }
-
-
 

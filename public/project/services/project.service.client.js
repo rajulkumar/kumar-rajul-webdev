@@ -7,8 +7,16 @@
         return {
             "registerProject":registerProject,
             "listProjects":listProjects,
-            "searchProject":searchProject
+            "searchProject":searchProject,
+            "getProject":getProject
         };
+
+        function getProject(projectName){
+            return $http.get("/api/projectx/project/"+projectName)
+                .then(function (response){
+                    return response.data;
+                })
+        }
 
         function searchProject(searchText){
             return $http.get("/api/projectx/project/search/"+searchText)

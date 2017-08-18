@@ -1,3 +1,4 @@
+<div ng-include="'views/header/templates/header.view.client.html'"></div>
 <div class="container-fluid">
 
     <h2 class="text-center">Register</h2>
@@ -32,7 +33,7 @@
 
     <label for="member-type">Memeber Type</label>
         <div id="member-type">
-            <input ng-model="model.user.memberType" type="radio" name="member" value="Owner"> Owner<br>
+            <!--<input ng-model="model.user.memberType" type="radio" name="member" value="Owner"> Owner<br>-->
             <input ng-model="model.user.memberType" type="radio" name="member" value="Developer"> Developer<br>
             <input ng-model="model.user.memberType" type="radio" name="member" value="User" checked> User<br>
         </div>

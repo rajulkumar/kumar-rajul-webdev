@@ -66,6 +66,11 @@
                 controller:"projectListController",
                 controllerAs: "model"
             })
+            .when("/project/:projectName",{
+                templateUrl:"views/project/templates/project-details.view.client.html",
+                controller:"projectDetailsController",
+                controllerAs: "model"
+            })
     }
 
     function checkLogin(userService, $q, $location) {

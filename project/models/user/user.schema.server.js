@@ -10,7 +10,7 @@ var userSchema=mongoose.Schema({
     projects:[{type:mongoose.Schema.Types.ObjectId,ref:'ProjectModel'}],
     issues:[{type:mongoose.Schema.Types.ObjectId,ref:'IssueModel'}],
     bluePrints:[{type:mongoose.Schema.Types.ObjectId,ref:'BlueprintModel'}],
-    followers:[{type:mongoose.Schema.Types.ObjectId,ref:'UserModel'}],
+    followers:[{type:mongoose.Schema.Types.ObjectId,ref:'PxUserModel'}],
     dateCreated:{type:Date,default:Date.now},
     facebook:{
         id:String,

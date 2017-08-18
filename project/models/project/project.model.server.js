@@ -6,9 +6,14 @@ var projectModel=mongoose.model('ProjectModel',projectSchema);
 projectModel.createProject=createProject;
 projectModel.findProjectById=findProjectById;
 projectModel.findProjects=findProjects;
+projectModel.findProjectByGitID=findProjectByGitID;
 
 
 module.exports=projectModel;
+
+function findProjectByGitID(gitId){
+    return projectModel.find({gitProjectId:gitId});
+}
 
 function createProject(project){
     return projectModel.create(project);

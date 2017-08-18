@@ -9,6 +9,7 @@ app.post("/api/projectx/project/create",createProject);
 app.put("/api/projectx/project/:projectId/member/:memberId",addMember);
 app.get("/api/projectx/project/list",listProjects);
 app.get("/api/projectx/project/search/:searchText",searchProject);
+app.get("/api/projectx/project/:projectName",getProject);
 
 app.post("/api/projectx/test",  gitproject);
 
@@ -20,9 +21,27 @@ function gitproject(req,res){
         })
 }
 
+function getProject(req,res){
+    var projectName=req.params.projectName;
+    gitApi.getProject(projectName)
+        .then(function (projectInfo){
+            projectModel.findProjectByGitID(projectInfo.id)
+                .then(function (localInfo){
+                    var project={};
+                    project.name=projectInfo.name;
+                    project.description=projectInfo.description;
+                    project.owner=localInfo.owner;
+                    project.created=localInfo.created;
+                    project.url=projectInfo.url;
+
+                    res.json(project);
+                })
+        })
+}
+
 function searchProject(req,res){
-    var searchTerm=req.params.searchTerm;
-    gitApi.searchProject(searchTerm)
+    var searchText=req.params.searchText;
+    gitApi.searchProject(searchText)
         .then(function(response){
             res.json(response);
         })
@@ -35,7 +54,7 @@ function createProject(req,res) {
     userModel.findUserByUsername(owner)
         .then(function (user){
             project.owner=user._id;
-            gitApi.createProject(project.title,project.description)
+            gitApi.createProject(project.name,project.description)
                 .then(function (projDoc){
                     project.gitProjectId=projDoc.id;
                     projectModel.createProject(project)

@@ -12,6 +12,7 @@
         var userId=$routeParams['userId'];
 
         function init(){
+            model.following=null;
             userService.findUserById(userId)
                 .then(function (user) {
                     model.user = user;
@@ -21,10 +22,10 @@
                             if (user == 0) {
                                 model.following = true;
                             } else {
-                                if (model.user.followers.indexOf(user._id) == -1) {
-                                    model.following = null;
-                                } else {
-                                    model.following = true;
+                                for(var c in model.user.followers) {
+                                    if (model.user.followers[c]._id==user._id) {
+                                        model.following = true;
+                                    }
                                 }
                             }
                         })

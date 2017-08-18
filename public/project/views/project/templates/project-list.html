@@ -2,11 +2,10 @@
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="project in model.projects">
             <div class="row">
-                <div class="col-xs-4">{{project.title}}</div>
-                <div class="col-xs-4">{{project.owner.username}}</div>
-                <div class="col-xs-2">{{project.created}}</div>
-                <div class="col-xs-2">
-                    <a ng-click="model.userDetails(user._id)">
+                <div class="col-xs-4">{{project.name}}</div>
+                <div class="col-xs-4">{{project.description}}</div>
+                <div class="col-xs-2 pull-right">
+                    <a ng-click="model.projectDetails(project.name)">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>

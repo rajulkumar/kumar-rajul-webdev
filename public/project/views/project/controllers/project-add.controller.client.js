@@ -15,12 +15,19 @@
                 .then (function(user) {
                     if (user == 0) {
                         model.user = null;
+                        $location.url("/login");
                     }
                     else {
-                        model.user = user;
 
-                    }
-                })
+                        if(user.username==="admin"){
+                model.user = user;
+            }
+            else{
+                $location.url("/login");
+            }
+
+        }
+    })
         }
         init();
 

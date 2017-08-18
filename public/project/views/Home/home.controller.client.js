@@ -12,6 +12,7 @@
         model.userDetails=userDetails;
         model.registerProject=registerProject;
         model.populateDrpDwn=populateDrpDwn;
+        model.projectDetails=projectDetails;
 
         function init(){
             userService.checkLogin()
@@ -44,6 +45,10 @@
 
         function populateDrpDwn(text){
             model.domain=text;
+        }
+
+        function projectDetails(projectName){
+            $location.url("/project/"+projectName);
         }
 
 
@@ -100,8 +105,8 @@
                 else if(domain=="Project"){
                     projectService.searchProject(searchText)
                         .then(function(projectList){
-                            model.projects=projectList;
-                            if(!projectList){
+                            model.projects=projectList.items;
+                            if(!projectList.items){
                                 model.noResults=true;
                             }
                         })

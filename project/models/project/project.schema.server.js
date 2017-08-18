@@ -1,7 +1,7 @@
 var mongoose=require('mongoose');
 
 var projectSchema = mongoose.Schema({
-    title: String,
+    name: String,
     purpose:String,
     description: String,
     owner:{type:mongoose.Schema.Types.ObjectId,ref:'PxUserModel'},

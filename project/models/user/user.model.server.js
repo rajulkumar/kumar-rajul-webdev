@@ -34,7 +34,10 @@ function createUser(user){
 }
 
 function findUserById(userId){
-    return userModel.findById(userId);
+    return userModel.findById(userId)
+        .populate('projects','title')
+        .populate('followers','username')
+        .exec()
 }
 
 function updateUser(userId,user){

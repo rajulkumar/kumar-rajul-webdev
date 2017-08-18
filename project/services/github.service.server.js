@@ -18,15 +18,28 @@ var options = {
 module.exports={
     "createProject":createProject,
     "searchProject":searchProject,
+    "getProject":getProject,
     "createBp":createBp,
     "getBp":getBp,
     "updateBp":updateBp,
     "deleteBp":deleteBp
 };
 
+function getProject(projectName){
+    options.method='GET';
+    options.uri=url+"/repos/projectx-org/"+projectName;
+    return request(options)
+        .then(function (response) {
+            return response;
+        })
+        .catch(function (err) {
+            console.log(err);
+        })
+}
+
 function searchProject(searchTerm){
     options.method='GET';
-    options.uri=url+"/search/repositories?q="+searchTerm;
+    options.uri=url+"/search/repositories?q="+searchTerm+"+user:projectx-org";
     return request(options)
         .then(function (response) {
             return response;

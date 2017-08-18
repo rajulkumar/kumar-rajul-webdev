@@ -1,28 +1,38 @@
+<div ng-include="'views/header/templates/header.view.client.html'"></div>
 <div class="container-fluid ">
-    <h2 class="text-center">{{model.user.name}}</h2>
-    <div class="row">
+    <div class="container-fluid">
+    <div class="card">
+    <h3 class="card-title text-center">{{model.user.username}}</h3>
 
-    <div class="col-xs-8">Username : {{model.user.username}}</div>
-    <div class="col-xs-8">Email : {{model.user.email}}</div>
-    <div class="col-xs-8">GithubID : {{model.user.githubId}}</div>
-    <div class="col-xs-8">User Type : {{model.user.memberType}}</div>
-    <div class="col-xs-8">Member since : {{model.user.dateCreated}}</div>
+
+    <div class="card-subtitle">Name : {{model.user.name}}</div>
+    <div class="card-text">Email : {{model.user.email}}</div>
+    <div class="card-text">GithubID : {{model.user.githubId}}</div>
+    <div class="card-text">User Type : {{model.user.memberType}}</div>
+    <div class="card-text">Member since : {{model.user.dateCreated}}</div>
     <!--<div id="renderIssue"></div>-->
-
+    <ul class="list-group">
     <div ng-repeat="project in model.user.projects">
-        {{project}}
+        <li>{{project}}</li>
     </div>
+    </ul>
+
+    <ul class="list-group">
     <div ng-repeat="issue in model.user.issues">
-        {{issue}}
+        <li>{{issue}}</li>
     </div>
+    </ul>
 
     <div ng-repeat="blueprint in model.user.blueprints">
         {{blueprint}}
     </div>
 
+        <ul class="list-group">
         <div ng-repeat="follower in model.user.followers">
-            {{follower}}
+            <li>{{follower.username}}</li>
         </div>
+        </ul>
+    </div>
 
     <div class="container-fluid">
     <a ng-click="model.follow(model.user._id)"
@@ -38,6 +48,7 @@
        class="btn btn-default btn-success btn-block col-xs-8"
        role="button">Back</a>
     </div>
+
     </div>
 
 </div>

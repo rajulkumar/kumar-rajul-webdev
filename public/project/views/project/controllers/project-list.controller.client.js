@@ -3,8 +3,10 @@
         .module("ProjectX")
         .controller("projectListController",projectListController);
 
-    function projectListController(projectService,userService){
+    function projectListController($location,projectService,userService){
         var model=this;
+
+        model.projectDetails=projectDetails;
 
         function init(){
             userService.checkLogin()
@@ -25,6 +27,10 @@
 
         }
         init();
+
+        function projectDetails(projectName){
+            $location.url("/project/:projectName");
+        }
     }
 
 
