@@ -3,17 +3,16 @@
         .module("ProjectX")
         .controller("blueprintViewController",blueprintViewController);
 
-    function blueprintViewController($location,$window,$routeParams,blueprintService){
+    function blueprintViewController($location,$window,$routeParams,bpService){
         var model=this;
 
-        model.findBp=findBp;
         model.back=back;
 
         var bpId=$routeParams['bpId'];
 
         function init(){
             if(bpId) {
-                blueprintService.getBlueprintById(bpId)
+                bpService.getBlueprintById(bpId)
                     .then(function (bp) {
                         model.bp = bp;
                     })

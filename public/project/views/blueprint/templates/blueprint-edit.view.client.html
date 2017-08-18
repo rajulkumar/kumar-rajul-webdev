@@ -11,7 +11,7 @@
               ng-model="model.bp.description"
               placeholder="Title"
               class="form-control"
-              rows="20"
+              rows="10"
               id="description"/>
 
     <label for="state">State</label>
@@ -33,6 +33,7 @@
 
 
     <a class="btn btn-default btn-primary btn-block"
+       ng-show="model.bp.state=='NEW'"
        ng-click="model.approve(model.bp)"
        role="button">Approve</a>
 
@@ -40,7 +41,7 @@
        ng-click="model.update(model.bp)"
        role="button">Update</a>
 
-    <a class="btn btn-default btn-default btn-block"
+    <a class="btn btn-default btn-danger  btn-block"
        ng-click="model.back()"
        role="button">Back</a>
 

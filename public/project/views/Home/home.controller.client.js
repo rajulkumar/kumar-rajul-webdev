@@ -3,7 +3,7 @@
         .module("ProjectX")
         .controller("homeController",homeController);
 
-    function homeController($location,$rootScope,userService,issueService,projectService){
+    function homeController($location,$rootScope,userService,issueService,projectService,bpService){
         var model=this;
 
         //model.login=login;
@@ -13,7 +13,7 @@
         model.registerProject=registerProject;
         model.populateDrpDwn=populateDrpDwn;
         model.projectDetails=projectDetails;
-        model.bpDetials=bpDetials;
+        model.bpDetails=bpDetails;
 
         function init(){
             userService.checkLogin()
@@ -118,8 +118,8 @@
                 }else if(domain=="Blueprint"){
                     bpService.findBp(searchText)
                         .then(function(bpList){
-                            model.blueprints=bpList.items;
-                            if(!bpListList.items){
+                            model.blueprints=bpList;
+                            if(!bpList){
                                 model.noResults=true;
                             }
                         })
@@ -142,8 +142,8 @@
             $location.url("/project/register");
         }
 
-        function bpDetials(bp){
-            if(model.user._id==bp.createdBy._id || model.user.memberType=='Developer' || model.username=='admin'){
+        function bpDetails(bp){
+            if(model.user._id==bp.createdBy || model.user.memberType=='Developer' || model.user.username=='admin'){
                 $location.url("/blueprint/edit/"+bp._id);
             }
             else{

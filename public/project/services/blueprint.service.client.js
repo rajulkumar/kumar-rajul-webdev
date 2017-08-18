@@ -29,7 +29,7 @@
 
 
         function getBlueprintById(bpId){
-            return $http.get("/api/projectx/bp/:bpId")
+            return $http.get("/api/projectx/bp/"+bpId)
                 .then(function (response){
                     return response.data;
                 })

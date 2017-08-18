@@ -32,7 +32,7 @@
             bp.state="NEW";
             bpService.createBp(bp)
                 .then(function (bp){
-                    $location.url("/bp/view/"+bp._id);
+                    $location.url("/blueprint/view/"+bp._id);
                 })
 
         }

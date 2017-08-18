@@ -1,7 +1,7 @@
 var request=require('request-promise');
 
 var url="https://api.github.com";
-var auth = "Basic " + new Buffer("projectx-org" + ":" + "46888df9de86e58a839974fdfe894c7fb4e9aaf6").toString("base64");
+var auth = "Basic " + new Buffer("projectx-org" + ":" + "8747066fead273459724d1109a7d9c5b3a9a9882").toString("base64");
 //var auth = "Basic " + new Buffer("projectx-org" + ":" + process.env.GITHUB_TOKEN).toString("base64");
 var options = {
     method: 'POST',

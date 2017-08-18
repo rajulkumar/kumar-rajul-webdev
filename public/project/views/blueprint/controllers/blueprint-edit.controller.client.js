@@ -3,11 +3,12 @@
         .module("ProjectX")
         .controller("editBlueprintController",editBlueprintController);
 
-    function editBlueprintController($location,$routeParams,$window,blueprintService,userService) {
+    function editBlueprintController($location,$routeParams,$window,bpService,userService) {
         var model=this;
 
         model.update=update;
         model.approve=approve;
+        model.back=back;
 
         var bpId=$routeParams['bpId'];
 
@@ -20,7 +21,7 @@
                     }
                     else {
                         model.user=user;
-                        blueprintService.getBlueprintById(bpId)
+                        bpService.getBlueprintById(bpId)
                             .then(function (bp) {
                                 model.bp = bp;
                             })
@@ -31,9 +32,10 @@
 
         function approve(bp){
             bp.project=bp.project._id;
-            bp.createdBy=bo.createdBy._id;
-            bp.approvedBy=user._id;
-            blueprintService.updateBp(bp._id,bp)
+            bp.createdBy=bp.createdBy._id;
+            bp.approvedBy=model.user._id;
+            bp.state='APPROVED';
+            bpService.updateBp(bp._id,bp)
                 .then(function(response){
                     $location.url("/");
                 })
@@ -43,14 +45,14 @@
             bp.project=bp.project._id;
             bp.createdBy=bp.createdBy._id;
             bp.approvedBy=bp.approvedBy._id;
-            blueprintService.updateBp(bp._id,bp)
+            bpService.updateBp(bp._id,bp)
                 .then(function(response){
                     $location.url("/");
                 })
         }
 
         function back(){
-            $window.histroy.back();
+            $window.history.back();
         }
 
     }
