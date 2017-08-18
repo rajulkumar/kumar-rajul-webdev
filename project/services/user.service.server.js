@@ -14,11 +14,7 @@ var facebookConfig = {
     callbackURL  : process.env.FACEBOOK_CALLBACK_URL
 };
 
-// var facebookConfig = {
-//     clientID     : "1999332800282747",
-//     clientSecret : "30f341e66886a8cd40708a8501470cbf",
-//     callbackURL  : "https://kumar-rajul-webdev.herokuapp.com/project/auth/facebook/callback"
-// };
+
 
 
 passport.use(new LocalStrategy(localStrategy));
