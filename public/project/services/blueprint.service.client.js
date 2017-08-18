@@ -10,8 +10,16 @@
             "assignBp":assignBp,
             "updateBp":updateBp,
             "getBlueprintById":getBlueprintById,
-            "findBp":findBp
+            "findBp":findBp,
+            "findByProjectId":findByProjectId
         };
+
+        function findByProjectId(projectId){
+            return $http.get("/api/projectx/bp/search/project/"+projectId)
+                .then(function(response){
+                    return response.data;
+                })
+        }
 
         function updateBp(bpId,bp){
             return $http.put("/api/projectx/bp/update/"+bpId,bp)

@@ -8,8 +8,13 @@ blueprintModel.getBlueprintById=getBlueprintById;
 blueprintModel.updateBlueprint=updateBlueprint;
 blueprintModel.findBlueprint=findBlueprint;
 blueprintModel.deleteBlueprint=deleteBlueprint;
+blueprintModel.findBlueprintByProjectId=findBlueprintByProjectId;
 
 module.exports=blueprintModel;
+
+function findBlueprintByProjectId(projectId){
+    return blueprintModel.find({project:projectId});
+}
 
 function createBlueprint(blueprint){
     return blueprintModel.create(blueprint);

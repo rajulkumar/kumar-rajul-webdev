@@ -19,7 +19,7 @@ function findProjectByName(name){
 
 
 function findProjectByGitID(gitId){
-    return projectModel.find({gitProjectId:gitId});
+    return projectModel.findOne({gitProjectId:gitId});
 }
 
 function createProject(project){

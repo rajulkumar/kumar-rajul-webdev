@@ -33,6 +33,7 @@ function getProject(req,res){
                     project.owner=localInfo.owner;
                     project.created=localInfo.created;
                     project.url=projectInfo.url;
+                    project.projectId=localInfo._id;
 
                     res.json(project);
                 })

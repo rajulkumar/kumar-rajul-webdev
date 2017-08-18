@@ -1,3 +1,5 @@
+<div ng-include="'views/header/templates/header.view.client.html'"></div>
+
 <div class="container-fluid">
     <label for="title">Title</label>
     <input name="title"
@@ -33,7 +35,7 @@
 
 
     <a class="btn btn-default btn-primary btn-block"
-       ng-show="model.bp.state=='NEW'"
+       ng-show="model.bp.state=='NEW' && model.user.memberType=='Developer'"
        ng-click="model.approve(model.bp)"
        role="button">Approve</a>
 

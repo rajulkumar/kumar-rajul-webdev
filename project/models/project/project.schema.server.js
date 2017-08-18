@@ -7,7 +7,7 @@ var projectSchema = mongoose.Schema({
     owner:{type:mongoose.Schema.Types.ObjectId,ref:'PxUserModel'},
     members:[{type:mongoose.Schema.Types.ObjectId,ref:'PxUserModel'}],
     gitProjectId:String,
-    created:{type:Date|Date.now},
+    created:{type:Date,default:Date.now},
     githubUrl:String,
     token:String
 },{collection:"project"});

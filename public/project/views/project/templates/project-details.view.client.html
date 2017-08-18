@@ -2,11 +2,25 @@
 
 <div class="container-fluid">
     <div class="card">
-        <h3 class="card-title">{{model.repo.name}}</h3>
+        <h2 class="card-title">{{model.repo.name}}</h2>
         <div class="card-subtitle">Descritpion: {{model.repo.description}}</div>
-        <div class="card-subtitle">Owner: {{model.repo.owner}}</div>
+        <!--<div class="card-subtitle">Owner: {{model.repo.owner}}</div>-->
         <div class="card-subtitle">Created: {{model.repo.created}}</div>
         <div class="card-subtitle">Url: {{model.repo.url}}</div>
+    </div>
+    <br>
+    <div class="card">
+    <ul class="list-group">
+        <div ng-repeat="bp in model.bpList">
+            <li class="list-group-item">
+                <div class="row">
+                <div class="col-xs-4">{{bp.title}}</div>
+                <div class="col-xs-4">{{bp.description}}</div>
+                <div class="col-xs-4">{{bp.state}}</div>
+                </div>
+            </li>
+        </div>
+    </ul>
     </div>
     <div class="container-fluid">
         <a ng-click="model.back()"

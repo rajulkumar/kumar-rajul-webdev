@@ -12,6 +12,16 @@ app.put("/api/projectx/bp/update/:bpId",updateBp);
 app.get("/api/projectx/bp/search/:searchText",findBp);
 // app.post("/api/projectx/bp/delete/:bpId",deleteBp);
 // app.post("/api/projectx/bp/list",listBp);
+app.get("/api/projectx/bp/search/project/:projectId",findByProjectId);
+
+
+function findByProjectId(req,res){
+    var projectId=req.params.projectId;
+    blueprintModel.findBlueprintByProjectId(projectId)
+        .then(function(response){
+            res.json(response);
+        })
+}
 
 function findBp(req,res){
     var searchText=req.params.searchText;
