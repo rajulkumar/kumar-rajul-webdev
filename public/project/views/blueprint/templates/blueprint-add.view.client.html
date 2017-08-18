@@ -1,3 +1,5 @@
+<div ng-include="'views/header/templates/header.view.client.html'"></div>
+
 <div class="container-fluid">
     <label for="title">Title</label>
     <input name="title"
@@ -6,17 +8,24 @@
            class="form-control"
            id="title"/>
 
+    <label for="project">Project</label>
+    <input name="title"
+           ng-model="model.bp.project"
+           placeholder="Project name"
+           class="form-control"
+           id="project"/>
+
     <label for="description">Description</label>
     <textarea name="description"
               ng-model="model.bp.description"
               placeholder="Title"
               class="form-control"
-              rows="20"
+              rows="15"
               id="description"/>
 
 
 
     <a class="btn btn-block btn-primary"
        role="button"
-       ng-click="model.createBlupeprint(model.bp)">Create</a>
+       ng-click="model.createBp(model.bp)">Create</a>
 </div>

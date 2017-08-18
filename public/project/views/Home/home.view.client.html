@@ -35,7 +35,10 @@
     </div>
     <div class="container-fluid">
         <div class="input-group inline">
-            <input ng-model="model.searchText" type="text" class="form-control wid2">
+            <input ng-model="model.searchText"
+                   type="text"
+                   placeholder="Search"
+                   class="form-control wid2">
 
             <div class="input-group-btn">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -69,5 +72,8 @@
     <div ng-include="'views/project/templates/project-list.html'"></div>
 
 
-    <label>root:{{model.userId}}</label>
-<label>root:{{model.userType}}</label>
+  <nav class="nav navbar navbar-fixed-bottom">
+      <a class="navbar-brand pull-right">
+          Powered by GitHub
+      </a>
+  </nav>

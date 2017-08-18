@@ -9,10 +9,10 @@
             "appproveBp":approveBp,
             "assignBp":assignBp,
             "updateBp":updateBp
-        }
+        };
 
         function createBp(bp){
-            return $http.post("",bp)
+            return $http.post("/api/projectx/bp/create",bp)
                 .then(function(response){
                    return response.data;
                 })

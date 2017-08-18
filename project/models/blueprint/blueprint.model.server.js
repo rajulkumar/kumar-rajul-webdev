@@ -1,15 +1,19 @@
 var mongoose=require('mongoose');
 var blueprintSchema=require('./blueprint.schema.server');
 
-var bpModel=mongoose.model('BlueprintModel',blueprintSchema);
+var blueprintModel=mongoose.model('BlueprintModel',blueprintSchema);
 
-// bpModel.createBp=createBp;
+blueprintModel.createBlueprint=createBlueprint;
 // bpModel.findBpById=findBpById;
 // bpModel.updateBp=updateBp;
 // bpModel.findBp=findBp;
 // bpModel.deleteBp=deleteBp;
 
-module.exports=bpModel;
+module.exports=blueprintModel;
+
+function createBlueprint(blueprint){
+    return blueprintModel.create(blueprint);
+}
 
 
 

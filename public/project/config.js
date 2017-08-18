@@ -71,6 +71,12 @@
                 controller:"projectDetailsController",
                 controllerAs: "model"
             })
+            .when("/blueprint/register",{
+                templateUrl:"views/blueprint/templates/blueprint-add.view.client.html",
+                controller:"bpAddController",
+                controllerAs: "model"
+            })
+
     }
 
     function checkLogin(userService, $q, $location) {

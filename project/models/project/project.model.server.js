@@ -7,9 +7,16 @@ projectModel.createProject=createProject;
 projectModel.findProjectById=findProjectById;
 projectModel.findProjects=findProjects;
 projectModel.findProjectByGitID=findProjectByGitID;
+projectModel.findProjectByName=findProjectByName;
 
 
 module.exports=projectModel;
+
+
+function findProjectByName(name){
+    return projectModel.findOne({name:name});
+}
+
 
 function findProjectByGitID(gitId){
     return projectModel.find({gitProjectId:gitId});
