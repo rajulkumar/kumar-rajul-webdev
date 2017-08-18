@@ -8,12 +8,21 @@ var userModel=require("../models/user/user.model.server");
 app.post("/api/projectx/project/create",createProject);
 app.put("/api/projectx/project/:projectId/member/:memberId",addMember);
 app.get("/api/projectx/project/list",listProjects);
+app.get("/api/projectx/project/search/:searchText",searchProject);
 
 app.post("/api/projectx/test",  gitproject);
 
 function gitproject(req,res){
     var body=req.body;
     gitApi.gitCreateProject(body.name,body.description)
+        .then(function(response){
+            res.json(response);
+        })
+}
+
+function searchProject(req,res){
+    var searchTerm=req.params.searchTerm;
+    gitApi.searchProject(searchTerm)
         .then(function(response){
             res.json(response);
         })

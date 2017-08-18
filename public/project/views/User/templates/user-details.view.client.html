@@ -26,12 +26,13 @@
 
     <div class="container-fluid">
     <a ng-click="model.follow(model.user._id)"
+       ng-show="!model.following"
        class="btn btn-block btn-primarybtn btn-block btn-primary col-xs-8"
        role="button">Follow</a>
 
-    <a ng-click="model.follow(model.user._id)"
-       class="btn btn-block btn-primarybtn btn-block btn-primary col-xs-8"
-       role="button">Unfollow</a>
+    <!--<a ng-click="model.follow(model.user._id)"-->
+       <!--class="btn btn-block btn-primarybtn btn-block btn-primary col-xs-8"-->
+       <!--role="button">Unfollow</a>-->
 
     <a ng-click="model.back()"
        class="btn btn-default btn-success btn-block col-xs-8"

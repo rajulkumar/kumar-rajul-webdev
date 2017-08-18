@@ -15,12 +15,21 @@
         init();
 
         function register(user) {
-            userService.createUser(user)
-                .then(function (user){
-                    $rootScope.userId=user._id;
-                    $rootScope.username=user.firstName;
-                    $location.url("/");
-                })
+            if(!user.username || !user.password || !user.verifyPass)
+            {
+                model.errorMessage="Please provide required details";
+            }
+            else if(user.password!==user.verifyPass){
+                model.errorMessage="Passoword don't match";
+            }
+            else {
+                userService.createUser(user)
+                    .then(function (user) {
+                        $rootScope.userId = user._id;
+                        $rootScope.username = user.firstName;
+                        $location.url("/");
+                    })
+            }
         }
 
         function cancel(){

@@ -13,15 +13,20 @@ userModel.updateUser=updateUser;
 //userModel.updateBlueprint=updateBlueprint;
 userModel.updateFollower=updateFollower;
 userModel.findUser=findUser;
+userModel.findUserByFacebookId=findUserByFacebookId;
 
 module.exports=userModel;
+
+function findUserByFacebookId(facebookId){
+    return userModel.findOne({'facebook.id':facebookId});
+}
 
 function findUserByUsername(username){
     return userModel.findOne({username:username});
 }
 
-function findUserByCreds(username,password){
-    return userModel.findOne({username:username,password:password});
+function findUserByCreds(username){
+    return userModel.findOne({username:username});
 }
 
 function createUser(user){

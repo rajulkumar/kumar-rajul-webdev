@@ -1,18 +1,4 @@
 <div ng-include="'views/header/templates/header.view.client.html'"></div>
 
-<div class="container-fluid">
-    <ul class="list-group">
-        <li class="list-group-item" ng-repeat="project in model.projects">
-            <div class="row">
-                <div class="col-xs-4">{{project.title}}</div>
-                <div class="col-xs-4">{{project.owner.username}}</div>
-                <div class="col-xs-2">{{project.created}}</div>
-                <div class="col-xs-2">
-                    <a ng-click="model.userDetails(user._id)">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
+<div ng-include="'views/project/templates/project-list.html'"></div>
+

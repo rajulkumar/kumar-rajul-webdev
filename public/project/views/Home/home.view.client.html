@@ -28,26 +28,24 @@
 <!--</div>-->
 <!--</nav>-->
 
-<div ng-controller="headerController" ng-include="'views/header/templates/header.view.client.html'"></div>
+<div ng-include="'views/header/templates/header.view.client.html'"></div>
+    <div ng-show="model.errorMessage"
+         class="alert alert-danger">
+        {{model.errorMessage}}
+    </div>
     <div class="container-fluid">
         <div class="input-group inline">
             <input ng-model="model.searchText" type="text" class="form-control wid2">
-            <!--<span class="input-group-addon">-->
-            <select   class="form-control wid" ng-model="model.domain">
-                <option value="User">User</option>
-                <option value="Issue">Issue</option>
-                <option value="Blueprint">Blueprint</option>
-            </select>
-                <!--</span>-->
-            <!--<div class="input-group-btn">-->
-                <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"-->
-                        <!--aria-expanded="false">{{model.searchType}}<span class="caret"></span></button>-->
-                <!--<ul class="dropdown-menu">-->
-                    <!--<li><a href="#">User</a></li>-->
-                    <!--<li><a href="#">Project</a></li>-->
-                    <!--<li><a href="#">Blueprint</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
+
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">{{model.domain}}<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a ng-click="model.populateDrpDwn('User')">User</a></li>
+                    <li><a ng-click="model.populateDrpDwn('Project')">Project</a></li>
+                    <li><a ng-click="model.populateDrpDwn('Blueprint')">Blueprint</a></li>
+                </ul>
+            </div>
             <span class="input-group-btn">
             <a ng-click="model.search(model.domain,model.searchText)" class="btn btn-default" type="button">
                 <span class="glyphicon glyphicon-search"></span>
@@ -60,10 +58,16 @@
                      <!--ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>-->
             <!--</div>-->
         <!--</div>-->
-        <div ng-include="'views/Issue/templates/issue-search-list.view.client.html'"></div>
-        <div ng-include="'views/User/templates/user-search-list.view.client.html'"></div>
 
+        <div ng-show="model.noResults" class=" container-fluid alert alert-danger">
+            No results
+        </div>
     </div>
+
+    <div ng-include="'views/Issue/templates/issue-search-list.view.client.html'"></div>
+    <div ng-include="'views/User/templates/user-search-list.view.client.html'"></div>
+    <div ng-include="'views/project/templates/project-list.html'"></div>
+
 
     <label>root:{{model.userId}}</label>
 <label>root:{{model.userType}}</label>

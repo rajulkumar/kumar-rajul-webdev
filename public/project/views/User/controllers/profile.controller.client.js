@@ -3,7 +3,7 @@
         .module("ProjectX")
         .controller("profileController",profileController);
 
-    function profileController($window,$rootScope,userService){
+    function profileController($window,$rootScope,userService,followerService){
         var model=this;
 
         model.updateProfile=updateProfile;
@@ -18,10 +18,15 @@
                     }
                     else {
                         model.user = user;
-                        var userId=$rootScope.userId;
+                        var userId=user._id;
                         userService.findUserById(userId)
                             .then(function (user){
                                 model.user=user;
+                                followerService.getFollowerByUserId(userId)
+                                    .then(function (followerData){
+                                        model.followerData=followerData;
+                                    })
+
                             })
 
                     }

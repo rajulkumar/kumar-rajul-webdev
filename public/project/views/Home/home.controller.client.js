@@ -3,7 +3,7 @@
         .module("ProjectX")
         .controller("homeController",homeController);
 
-    function homeController($location,$rootScope,userService,issueService){
+    function homeController($location,$rootScope,userService,issueService,projectService){
         var model=this;
 
         //model.login=login;
@@ -11,6 +11,7 @@
         model.issueDetails=issueDetails;
         model.userDetails=userDetails;
         model.registerProject=registerProject;
+        model.populateDrpDwn=populateDrpDwn;
 
         function init(){
             userService.checkLogin()
@@ -27,26 +28,50 @@
 
                     }
 
-                    model.userId=$rootScope.userId;
-                    model.username=$rootScope.username;
-                    model.userType=$rootScope.userType;
-                })
+                    // model.userId=$rootScope.userId;
+                    // model.username=$rootScope.username;
+                    // model.userType=$rootScope.userType;
+                    model.user=user;
+                });
+                $rootScope.logout=logout;
+                model.noResults=null;
         }
         init();
 
-        function login(){
-            $location.url("/login");
+        // function login(){
+        //     $location.url("/login");
+        // }
+
+        function populateDrpDwn(text){
+            model.domain=text;
+        }
+
+
+        function logout(){
+            // $rootScope.userId=null;
+            // $rootScope.username=null;
+            userService.logout()
+                .then(function(res){
+                    console.log($location.pathname);
+                    if($location.path()=="/"){
+                        init();
+                    }
+
+                    $location.url("/");
+                })
+
         }
 
         function search(domain,searchText){
+            model.noResults=null;
             var valid=true;
             if(domain==""){
-                model.errorMessage="Please provide a domain to search"
+                model.errorMessage="Please provide a domain to search";
                 valid=false;
             }
 
             if(searchText.trim()==""){
-                model.errorMessage="Please provide a search text"
+                model.errorMessage="Please provide a search text";
                 valid=false;
             }
 
@@ -55,6 +80,9 @@
                     userService.findUsers(searchText)
                         .then(function (users){
                             model.users=users;
+                            if(!users){
+                                model.noResults=true;
+                            }
                         })
                 }
                 else if(domain=="Issue"){
@@ -64,6 +92,18 @@
                     issueService.search(issue)
                         .then(function (issueList){
                             model.issueList=issueList;
+                            if(!issueList){
+                                model.noResults=true;
+                            }
+                        })
+                }
+                else if(domain=="Project"){
+                    projectService.searchProject(searchText)
+                        .then(function(projectList){
+                            model.projects=projectList;
+                            if(!projectList){
+                                model.noResults=true;
+                            }
                         })
                 }
 

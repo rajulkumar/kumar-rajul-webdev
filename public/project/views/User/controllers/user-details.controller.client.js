@@ -13,9 +13,24 @@
 
         function init(){
             userService.findUserById(userId)
-                .then(function (user){
-                    model.user=user;
+                .then(function (user) {
+                    model.user = user;
+
+                    userService.checkLogin()
+                        .then(function (user) {
+                            if (user == 0) {
+                                model.following = true;
+                            } else {
+                                if (model.user.followers.indexOf(user._id) == -1) {
+                                    model.following = null;
+                                } else {
+                                    model.following = true;
+                                }
+                            }
+                        })
                 })
+
+
         }
         init();
 

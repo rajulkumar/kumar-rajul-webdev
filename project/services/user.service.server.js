@@ -2,11 +2,27 @@ var app=require('../../express');
 
 var userModel=require("../models/user/user.model.server");
 var followerModel=require("../models/follower/follower.model.server");
+var bcrypt = require("bcrypt-nodejs");
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+
+var facebookConfig = {
+    clientID     : process.env.FACEBOOK_CLIENT_ID,
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+};
+
+// var facebookConfig = {
+//     clientID     : "1999332800282747",
+//     clientSecret : "30f341e66886a8cd40708a8501470cbf",
+//     callbackURL  : "https://kumar-rajul-webdev.herokuapp.com/project/auth/facebook/callback"
+// };
+
 
 passport.use(new LocalStrategy(localStrategy));
+//passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
@@ -18,15 +34,31 @@ app.get("/api/projectx/user/:userId",findUserById);
 app.put("/api/projectx/user/:userId",updateUser);
 app.get("/api/projectx/user/search/:searchText",findUsers);
 app.put("/api/projectx/user/:userId/follow/:followerId",followUser);
+app.get("/auth/facebook",passport.authenticate('facebook', { scope : 'email' }));
+app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect: '/#/profile',
+        failureRedirect: '/#/login'
+    }));
+
+function facebookStrategy(token, refreshToken, profile, done) {
+    developerModel
+        .findUserByFacebookId(profile.id)}
+
 
 function localStrategy(username,password,done){
     userModel
-        .findUserByCreds(username, password)
+        .findUserByCreds(username)
         .then(function (user) {
             if (!user) {
                 return done(null, false);
             }
-            return done(null, user);
+            else if(user && bcrypt.compareSync(password, user.password)){
+                return done(null, user);
+            }else{
+                return done(null, false);
+            }
+
         }, function (err) {
             if (err) {
                 return done(err);
@@ -110,15 +142,27 @@ function findUsers(req,res){
 
 function createUser(req,res){
     var user=req.body;
+    user.password = bcrypt.hashSync(user.password);
     userModel.createUser(user)
         .then(function (userDoc){
             var userD=userDoc;
-            followerModel.createFollower(userDoc._id)
-                .then(function(response){
-                    res.json(userD);
-                },function(err){
-                    res.statusCode(500).send(err);
-                })
+            if(userDoc) {
+                followerModel.createFollower(userDoc._id)
+                    .then(function (response) {
+                        if(response){
+                            req.login(userDoc,function(err){
+                                if(err){
+                                    res.statusCode(400).send(err);
+                                }else{
+                                    res.json(userD);
+                                }
+                            })
+                        }
+
+                    }, function (err) {
+                        res.statusCode(500).send(err);
+                    })
+            }
 
         },function(err){
             res.send(err);

@@ -6,8 +6,16 @@
     function projectService($http){
         return {
             "registerProject":registerProject,
-            "listProjects":listProjects
+            "listProjects":listProjects,
+            "searchProject":searchProject
         };
+
+        function searchProject(searchText){
+            return $http.get("/api/projectx/project/search/"+searchText)
+                .then(function (response){
+                    return response.data;
+                })
+        }
 
         function registerProject(project){
             return $http.post("/api/projectx/project/create",project)

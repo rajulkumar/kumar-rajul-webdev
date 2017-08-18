@@ -32,6 +32,42 @@
            class="form-control"
            id="github-id"/>
 
+    <label>Follow</label><br>
+    <label>Users</label>
+    <!--<div class="container-fluid">-->
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="user in model.followerData.user">
+                <div class="row">
+                    <div class="col-xs-4">{{user.username}}</div>
+                </div>
+
+            </li>
+        </ul>
+    <!--</div>-->
+
+    <div class="container-fluid">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="project in model.followerData.project">
+                <div class="row">
+                    <div class="col-xs-4">{{project.title}}</div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+
+    <div class="container-fluid">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="bp in model.followerData.blueprint">
+                <div class="row">
+                    <div class="col-xs-4">{{bp.title}}</div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+
+
     <a class="btn btn-default btn-primary btn-block"
        ng-click="model.updateProfile(model.user._id,model.user)"
        role="button">Update</a>

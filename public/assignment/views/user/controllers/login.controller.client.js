@@ -17,11 +17,7 @@
 
         function login(user){
 
-            if(!user)
-            {
-                model.errorMessage="Please provide user credentials"
-            }
-            else {
+
                 userService.findUserByCredentials(user)
                     .then(function (userInfo) {
                         if (userInfo === null) {
@@ -31,7 +27,7 @@
                             $location.url("user/" + userInfo._id);
                         }
                     });
-            }
+
         }
 
         function register(){

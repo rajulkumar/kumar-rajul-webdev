@@ -11,7 +11,11 @@ var userSchema=mongoose.Schema({
     issues:[{type:mongoose.Schema.Types.ObjectId,ref:'IssueModel'}],
     bluePrints:[{type:mongoose.Schema.Types.ObjectId,ref:'BlueprintModel'}],
     followers:[{type:mongoose.Schema.Types.ObjectId,ref:'UserModel'}],
-    dateCreated:{type:Date,default:Date.now}
+    dateCreated:{type:Date,default:Date.now},
+    facebook:{
+        id:String,
+        token:String
+    }
 },{collection:"user"});
 
 module.exports=userSchema;

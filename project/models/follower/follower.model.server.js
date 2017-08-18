@@ -6,6 +6,7 @@ var followerModel=mongoose.model('FollowerModel',followerSchema);
 followerModel.createFollower=createFollower;
 followerModel.findFollowerById=findFollowerById;
 followerModel.findFollowerByUserId=findFollowerByUserId;
+followerModel.getFollowerByUserId=getFollowerByUserId;
 
 module.exports=followerModel;
 
@@ -21,5 +22,15 @@ function findFollowerById(followerId){
 }
 
 function findFollowerByUserId(userId){
-    return followerModel.findOne({userId:userId});
+    return followerModel.findOne({userId:userId})
+
+}
+
+function getFollowerByUserId(userId){
+    return followerModel.findOne({userId:userId})
+        .populate('user','username')
+        //.populate('blueprint','title')
+        .populate('project','title')
+        .exec()
+
 }

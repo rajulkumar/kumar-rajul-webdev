@@ -12,6 +12,6 @@ var blueprintSchema = mongoose.Schema({
     state: {type: String, enum: ['NEW', 'APPROVED', 'DISCARDED','CLOSED']},
     comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'CommentsModel'}],
     followers: [{type: mongoose.Schema.Types.ObjectId, ref: 'PxUserModel'}]
-});
+},{collection:'blueprint'});
 
 module.exports=blueprintSchema;

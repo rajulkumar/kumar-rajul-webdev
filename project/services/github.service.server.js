@@ -1,7 +1,8 @@
 var request=require('request-promise');
 
 var url="https://api.github.com";
-var auth = "Basic " + new Buffer("projectx-org" + ":" + "d683b8884a6bb2bb054ba2595faf2df194504152").toString("base64");
+var auth = "Basic " + new Buffer("projectx-org" + ":" + "dc8b6820739f64bb00d57610245c1270da47b2e2").toString("base64");
+//var auth = "Basic " + new Buffer("projectx-org" + ":" + process.env.GITHUB_TOKEN).toString("base64");
 var options = {
     method: 'POST',
     uri: 'https://api.github.com/user/repos',
@@ -16,11 +17,24 @@ var options = {
 
 module.exports={
     "createProject":createProject,
+    "searchProject":searchProject,
     "createBp":createBp,
     "getBp":getBp,
     "updateBp":updateBp,
     "deleteBp":deleteBp
 };
+
+function searchProject(searchTerm){
+    options.method='GET';
+    options.uri=url+"/search/repositories?q="+searchTerm;
+    return request(options)
+        .then(function (response) {
+            return response;
+        })
+        .catch(function (err) {
+            console.log(err);
+        })
+}
 
 function createProject(title,desc) {
     options.body={"name":title,"description":desc};
