@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
-                <li ng-show="model.user.userType!='User'" class="dropdown">
+                <li ng-show="model.user.username=='admin'" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" id="drpdwn"
                        aria-haspopup="true" aria-expanded="true">Project <span class="caret"></span></a>
                     <ul class="dropdown-menu menu-back" aria-labelledby="drpdwn">
@@ -24,20 +24,21 @@
                         <li><a class="white" href="#!/project/list">List project</a></li>
                         <!--<li><a class="white" href="#">Edit Project</a></li>-->
                         <!--<li role="separator" class="divider"></li>-->
-                        <li><a class="white" href="#">Delete project</a></li>
+                        <!--<li><a class="white" href="#">Delete project</a></li>-->
                         <!--<li role="separator" class="divider"></li>-->
                         <!--<li><a href="#">One more separated link</a></li>-->
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" id="drpdwn1"
+                       ng-show="model.user.username"
                        aria-haspopup="true" aria-expanded="true">Blueprint <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="drpdwn1">
                         <li><a class="white" href="#!/blueprint/register">Add blueprint</a></li>
                         <li><a class="white" href="#">List blueprint</a></li>
                         <li><a class="white" href="#">Edit blueprint</a></li>
                         <!--<li role="sepaator" class="divider"></li>-->
-                        <li><a class="white" href="#">Delete blueprint</a></li>
+                        <!--<li><a class="white" href="#">Delete blueprint</a></li>-->
                         <!--<li role="separator" class="divider"></li>-->
                         <!--<li><a href="#">One more separated link</a></li>-->
                     </ul>

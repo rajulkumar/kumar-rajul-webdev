@@ -1,7 +1,7 @@
 var request=require('request-promise');
 
 var url="https://api.github.com";
-var auth = "Basic " + new Buffer("projectx-org" + ":" + "dc8b6820739f64bb00d57610245c1270da47b2e2").toString("base64");
+var auth = "Basic " + new Buffer("projectx-org" + ":" + "92d004fa419f86df9af566300ccb871004b26d3e").toString("base64");
 //var auth = "Basic " + new Buffer("projectx-org" + ":" + process.env.GITHUB_TOKEN).toString("base64");
 var options = {
     method: 'POST',
@@ -62,9 +62,9 @@ function createProject(title,desc) {
 }
 
 function createBp(project,fileName,description,message){
-    options.body={"message":message,"content":new Buffer(description).toString("base64")};
-    options.uri=uri+"/repos/project-x/"+project+"/contents/"+fileName+".txt";
-    options.method="PUT";
+    options.method='PUT';
+    options.body={"message":message,"content": new Buffer(description).toString("base64")};
+    options.uri=url+"/repos/projectx-org/ccccccccc/contents/2352352pkmkm2223.txt";
 
     return request(options)
         .then(function (response){

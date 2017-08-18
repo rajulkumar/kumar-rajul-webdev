@@ -29,7 +29,7 @@
         init();
 
         function projectDetails(projectName){
-            $location.url("/project/:projectName");
+            $location.url("/project/"+projectName);
         }
     }
 
