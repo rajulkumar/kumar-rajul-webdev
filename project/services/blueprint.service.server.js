@@ -6,10 +6,31 @@ var projectModel=require("../models/project/project.model.server");
 var userModel=require("../models/user/user.model.server");
 
 app.post("/api/projectx/bp/create",createBlueprint);
+app.get("/api/projectx/bp/:bpId",getBlueprintById);
 // app.post("/api/projectx/bp/get/:bpId",getBp);
-// app.post("/api/projectx/bp/update/:bpId",updateBp);
+app.put("/api/projectx/bp/update/:bpId",updateBp);
+app.get("/api/projectx/bp/search/:searchText",findBp);
 // app.post("/api/projectx/bp/delete/:bpId",deleteBp);
 // app.post("/api/projectx/bp/list",listBp);
+
+function findBp(req,res){
+    var searchText=req.params.searchText;
+    blueprintModel.findBlueprint(searchText)
+        .then(function(response){
+            res.json(response);
+        })
+}
+
+
+function updateBp(req,res){
+    var body=req.body;
+    var bpId=req.params.bpId;
+
+    blueprintModel.updateBlueprint(bpId,body)
+        .then(function(response){
+            res.json(response);
+        })
+}
 
 function createBlueprint(req,res){
     var body=req.body;
@@ -27,6 +48,13 @@ function createBlueprint(req,res){
 
                 })
         })
+}
 
+function getBlueprintById(req,res){
+    var bpId=req.params.bpId;
 
+    blueprintModel.getBlueprintById(bpId)
+        .then(function(bp){
+            res.json(bp);
+        })
 }

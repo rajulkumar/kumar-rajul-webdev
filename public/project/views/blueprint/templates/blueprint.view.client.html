@@ -1,3 +1,21 @@
+<div ng-include="'views/header/templates/header.view.client.html'"></div>
+
 <div class="container-fluid">
+    <div class="card">
+        <h3 class="card-title">{{model.bp.title}}</h3>
+        <div class="card-subtitle">Descritpion: {{model.bp.description}}</div>
+        <div class="card-subtitle">State: {{model.bp.state}}</div>
+        <div class="card-subtitle">Project: {{model.bp.project.name}}</div>
+        <div class="card-subtitle">Created by: {{model.bp.createdBy.username}}</div>
+        <div class="card-subtitle">Created on: {{model.bp.created}}</div>
+        <div class="card-subtitle">Approved by: {{model.bp.approvedBy.username}}</div>
+        <div class="card-subtitle">Approved on: {{model.bp.approved}}</div>
+    </div>
+    <div class="container-fluid">
+        <a ng-click="model.back()"
+           class="btn btn-default btn-success btn-block col-xs-8"
+           role="button">Back</a>
+    </div>
+
 
 </div>

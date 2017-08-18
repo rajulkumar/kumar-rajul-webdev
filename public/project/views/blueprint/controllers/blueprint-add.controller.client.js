@@ -27,12 +27,12 @@
         init();
 
         function createBp(bp){
-            bp.project=projectId;
+            //bp.project=projectId;
             bp.createdBy=model.user._id;
             bp.state="NEW";
             bpService.createBp(bp)
                 .then(function (bp){
-                    $location("/bp/view/"+bp._id);
+                    $location.url("/bp/view/"+bp._id);
                 })
 
         }

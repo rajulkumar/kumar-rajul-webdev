@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="bp in model.blueprints">
+            <div class="row">
+                <div class="col-xs-4">{{bp.title}}</div>
+                <div class="col-xs-4">{{bp.project.name}}</div>
+                <div class="col-xs-2">{{bp.state}}</div>
+                <div class="col-xs-2 pull-right">
+                    <a ng-click="model.bpDetails(bp)">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

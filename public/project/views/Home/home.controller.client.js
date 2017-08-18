@@ -13,6 +13,7 @@
         model.registerProject=registerProject;
         model.populateDrpDwn=populateDrpDwn;
         model.projectDetails=projectDetails;
+        model.bpDetials=bpDetials;
 
         function init(){
             userService.checkLogin()
@@ -69,6 +70,10 @@
 
         function search(domain,searchText){
             model.noResults=null;
+            model.projects=null;
+            model.blueprints=null;
+            model.users=null;
+            model.issueList=null;
             var valid=true;
             if(domain==""){
                 model.errorMessage="Please provide a domain to search";
@@ -110,6 +115,14 @@
                                 model.noResults=true;
                             }
                         })
+                }else if(domain=="Blueprint"){
+                    bpService.findBp(searchText)
+                        .then(function(bpList){
+                            model.blueprints=bpList.items;
+                            if(!bpListList.items){
+                                model.noResults=true;
+                            }
+                        })
                 }
 
             }
@@ -127,6 +140,15 @@
 
         function registerProject(){
             $location.url("/project/register");
+        }
+
+        function bpDetials(bp){
+            if(model.user._id==bp.createdBy._id || model.user.memberType=='Developer' || model.username=='admin'){
+                $location.url("/blueprint/edit/"+bp._id);
+            }
+            else{
+                $location.url("/blueprint/view/"+bp._id);
+            }
         }
     }
 

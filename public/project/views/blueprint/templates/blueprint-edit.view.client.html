@@ -17,24 +17,31 @@
     <label for="state">State</label>
     <label id="state">{{model.state}}</label>
 
-    <label for="assigned">Assigned</label>
-    <input name="assigned"
-           ng-model="model.bp.assigned"
-           placeholder="Assignee username"
+    <label for="owner">Owner</label>
+    <input name="owner"
+           ng-model="model.bp.createdBy.username"
            class="form-control"
-           id="assigned"/>
+           disabled
+           id="owner"/>
+
+    <label for="project">Project</label>
+    <input name="project"
+           ng-model="model.bp.project.name"
+           class="form-control"
+           disabled
+           id="project"/>
 
 
     <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.approveBp()"
+       ng-click="model.approve(model.bp)"
        role="button">Approve</a>
 
     <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.assignBp(model.project)"
-       role="button">Assign</a>
-
-    <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.updateBp(model.project)"
+       ng-click="model.update(model.bp)"
        role="button">Update</a>
+
+    <a class="btn btn-default btn-default btn-block"
+       ng-click="model.back()"
+       role="button">Back</a>
 
 </div>

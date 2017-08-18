@@ -76,6 +76,17 @@
                 controller:"bpAddController",
                 controllerAs: "model"
             })
+            .when("/blueprint/view/:bpId",{
+                templateUrl:"views/blueprint/templates/blueprint.view.client.html",
+                controller:"blueprintViewController",
+                controllerAs: "model"
+            })
+            .when("/blueprint/edit/:bpId",{
+                templateUrl:"views/blueprint/templates/blueprint-edit.view.client.html",
+                controller:"editBlueprintController",
+                controllerAs: "model"
+            })
+
 
     }
 
